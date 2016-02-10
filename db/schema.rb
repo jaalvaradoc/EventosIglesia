@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160210150906) do
+ActiveRecord::Schema.define(version: 20160210203706) do
+
+  create_table "eventos", force: true do |t|
+    t.string   "nombre"
+    t.text     "descripcion"
+    t.string   "imagen"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "tallers_count", default: 0, null: false
+  end
+
+  create_table "tallers", force: true do |t|
+    t.string   "nombre"
+    t.string   "descripcion"
+    t.string   "imagen"
+    t.string   "hora"
+    t.string   "lugar"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "evento_id"
+  end
+
+  add_index "tallers", ["evento_id"], name: "index_tallers_on_evento_id"
 
   create_table "users", force: true do |t|
     t.string   "crypted_password",          limit: 40

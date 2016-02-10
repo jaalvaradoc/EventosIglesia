@@ -1,18 +1,19 @@
-class Evento < ActiveRecord::Base
+class Taller < ActiveRecord::Base
 
   hobo_model # Don't put anything above this
 
   fields do
     nombre :string
-    descripcion :text
+    descripcion :string
     imagen :string
-    tallers_count :integer, :default => 0, :null => false
+    hora :string
+    lugar :string
     timestamps
   end
 
-  has_many :tallers, :dependent => :destroy, :inverse_of => :evento
+  attr_accessible :nombre, :descripcion, :imagen, :hora, :lugar, :evento, :evento_id
 
-  attr_accessible :nombre, :descripcion, :lugar, :hora, :imagen, :tallers
+  belongs_to :evento, :inverse_of => :tallers, :counter_cache => true
 
   # --- Permissions --- #
 
