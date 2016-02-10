@@ -10,9 +10,11 @@ class Evento < ActiveRecord::Base
     timestamps
   end
 
+  attr_accessible :nombre, :descripcion, :lugar, :hora, :imagen, :tallers
+
   has_many :tallers, :dependent => :destroy, :inverse_of => :evento
 
-  attr_accessible :nombre, :descripcion, :lugar, :hora, :imagen, :tallers
+  children :tallers
 
   # --- Permissions --- #
 

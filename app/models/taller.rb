@@ -22,7 +22,7 @@ class Taller < ActiveRecord::Base
   end
 
   def update_permitted?
-    acting_user.administrator?
+    acting_user.administrator? && !evento_changed?
   end
 
   def destroy_permitted?
