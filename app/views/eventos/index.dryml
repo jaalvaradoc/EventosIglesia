@@ -12,14 +12,15 @@
       </section>
     </header>
 
-    
+  <%= link_to "Crear nuevo evento", "eventos/new"%>
+  <br/>
 	<%@eventos.each do |evento|%>
-	<div class="content-header hero-unit">
+	<div class="hero-unit" style="float: left;">
 	<h3><%=evento.nombre%><br/></h3>
 	<%= image_tag(evento.imagen, size: "300x300", alt: "#{evento.nombre}")%><br/>
 	Descripci&oacute;n: <%=evento.descripcion%><br/>
 	<%= link_to 'Ver talleres', "eventos/#{evento.id}" %>
-	</div>
+	</div> 
 
 	<%end%>
 

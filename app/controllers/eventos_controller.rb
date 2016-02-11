@@ -8,8 +8,11 @@ class EventosController < ApplicationController
   	@eventos=Evento.all
   end
 
-  #def show
-  #	@evento=Evento.find
-  #end
+  def show
+  	@evento=Evento.find(params[:id])
+
+  	@tallers=Taller.all
+  end
+
 
 end
