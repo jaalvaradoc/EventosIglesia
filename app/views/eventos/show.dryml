@@ -1,3 +1,4 @@
+<head><meta name="viewport" content="width=device-width, initial-scale=1"/></head>
 <page title="Home">
 
   <body: class="front-page"/>
@@ -13,20 +14,19 @@
     </header>
 
 	
-	<div class="hero-unit">
-	<center><%= image_tag(@evento.imagen, size: "300x300", alt: "#{@evento.nombre}")%></center><br/>
+	<div class="container">
+	<%= image_tag(@evento.imagen, size: "300x300", alt: "#{@evento.nombre}")%><br/>
 	Descripci&oacute;n: <%=@evento.descripcion%><br/>
 	<%= link_to 'Ver todos los eventos', "/eventos" %>
 	<%= link_to 'Agregar Taller', "/eventos/#{@evento.id}/tallers/new" %>
 	</div>
 	<h2>Talleres</h2><br/>
-	<div class="hero-unit">
+	<div class="row hero-unit">
 	<%@tallers.each do |taller|%>
-	<div>
+	<div class="span">
 	<h3><%=taller.nombre%><br/></h3>
 	<%= image_tag(taller.imagen, size: "300x300", alt: "#{taller.nombre}")%><br/>
-	Descripci&oacute;n: <%=taller.descripcion%><br/>
-	<%= link_to 'Ver Detalles', "eventos/#{@evento.id}/tallers/taller.id" %>
+	<%= link_to 'Ver Detalles', "/tallers/#{taller.id}" %>
 	</div> 
 
 	<%end%>
