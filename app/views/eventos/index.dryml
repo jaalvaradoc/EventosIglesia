@@ -3,26 +3,26 @@
   <body: class="front-page"/>
 
   <content:>
-    <header class="content-header hero-unit">
+    <header class="row hero-unit">
       <h2>Eventos</h2>
-      <section class="welcome-message">
-        <ul>
-          
-        </ul>
-      </section>
-    </header>
-
-  <%= link_to "Crear nuevo evento", "eventos/new"%>
+    
+<%if current_user.administrator?%>
+  <%= link_to "Crear nuevo evento", "eventos/new", :class => "btn btn-small btn-success" %>
   <br/>
+  <%end%>
+  </header>
+  <div class="row hero-unit">
 	<%@eventos.each do |evento|%>
-	<div class="hero-unit" style="float: left;">
-	<h3><%=evento.nombre%><br/></h3>
+  <div class="span">
+	<h3><%=evento.nombre%>
+  <br/>
+  <br/></h3>
 	<%= image_tag(evento.imagen, size: "300x300", alt: "#{evento.nombre}")%><br/>
 	Descripci&oacute;n: <%=evento.descripcion%><br/>
-	<%= link_to 'Ver talleres', "eventos/#{evento.id}" %>
+	<%= link_to 'Ver talleres', "eventos/#{evento.id}", :class => "btn btn-small btn-primary" %>
 	</div> 
-
 	<%end%>
+  </div>
 
 
     <section class="content-body">
