@@ -1,32 +1,28 @@
-<head><meta name="viewport" content="width=device-width, initial-scale=1"/></head>
+
 <page title="Home">
 
   <body: class="front-page"/>
 
   <content:>
-    <header class="content-header hero-unit">
-      <h2><%=@evento.nombre%></h2>
-      <section class="welcome-message">
-        <ul>
-          
-        </ul>
-      </section>
-    </header>
-
-	
-	<div class="container">
-	<%= image_tag(@evento.imagen, size: "300x300", alt: "#{@evento.nombre}")%><br/>
+	<div class="row hero-unit">
+	<div class="span">
+	<%= image_tag(@evento.imagen, size: "300x300", alt: "#{@evento.nombre}")%><br/></div><div class="span">
+	<h2><%=@evento.nombre%></h2><br/>
 	Descripci&oacute;n: <%=@evento.descripcion%><br/>
-	<%= link_to 'Ver todos los eventos', "/eventos" %>
-	<%= link_to 'Agregar Taller', "/eventos/#{@evento.id}/tallers/new" %>
+	<%= link_to 'Ver todos los eventos', "/eventos" , :class =>"btn btn-small btn-primary"%>&nbsp;&nbsp;
+	<%= link_to 'Agregar Taller', "/eventos/#{@evento.id}/tallers/new" , :class =>"btn btn-small"%></div>
 	</div>
 	<h2>Talleres</h2><br/>
 	<div class="row hero-unit">
 	<%@tallers.each do |taller|%>
 	<div class="span">
 	<h3><%=taller.nombre%><br/></h3>
-	<%= image_tag(taller.imagen, size: "300x300", alt: "#{taller.nombre}")%><br/>
-	<%= link_to 'Ver Detalles', "/tallers/#{taller.id}" %>
+	<dd height="400px">
+	<%= image_tag(taller.imagen, size: "300x300", alt: "#{taller.nombre}")%>
+</dd>
+	<br/>
+	<%= link_to 'Ver Detalles', "/tallers/#{taller.id}", :class =>"btn btn-small" %>&nbsp;&nbsp;
+	<%= link_to 'Agregar Taller', "/eventos/#{@evento.id}/tallers/new" , :class =>"btn btn-small "%>
 	</div> 
 
 	<%end%>
