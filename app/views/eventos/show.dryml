@@ -36,8 +36,8 @@
 	</tr>
 	</table>
 	<%= link_to 'Ver Detalles', "/tallers/#{taller.id}", :class =>"btn btn-small btn-primary" %>&nbsp;&nbsp;
-	<%if current_user.administrator?%>
-	<%= link_to 'Agregar Taller', "/eventos/#{@evento.id}/tallers/new" , :class =>"btn btn-small btn-success"%>
+	<%if !current_user.administrator?%>
+	<%= link_to 'Inscribirse', "/eventos/#{@evento.id}/tallers/new" , :class =>"btn btn-small btn-success"%>
 	<%end%>
 	<br/>
 	</div> 
