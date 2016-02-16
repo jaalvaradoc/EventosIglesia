@@ -11,14 +11,21 @@
   <br/>
   <%end%>
   </header>
-  <div class="row hero-unit">
+  <div class="row">
 	<%@eventos.each do |evento|%>
-  <div class="span">
-	<h3><%=evento.nombre%>
-  <br/>
-  <br/></h3>
-	<%= image_tag(evento.imagen, size: "300x300", alt: "#{evento.nombre}")%><br/>
-	Descripci&oacute;n: <%=evento.descripcion%><br/>
+  <div class="span4">
+  <table>
+    <tr>
+      <td heigh="20px" valign="bottom">
+	<h3><%=evento.nombre%></h3>
+  </td>
+    </tr>
+  <tr>
+    <td height="250px" valign="top">
+	<%= image_tag(evento.imagen, size: "250x250", alt: "#{evento.nombre}")%>
+  </td>
+  </tr>
+  </table>
 	<%= link_to 'Ver talleres', "eventos/#{evento.id}", :class => "btn btn-small btn-primary" %>
 	</div> 
 	<%end%>

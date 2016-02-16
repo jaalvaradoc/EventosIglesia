@@ -20,9 +20,9 @@
 		</div>
 	</div>
 	<h2>Talleres</h2><br/>
-	<div class="row hero-unit">
+	<div class="row hero">
 	<%@tallers.each do |taller|%>
-	<div class="span">
+	<div class="span3">
 	<table>
 		<tr>
 			<td heigh="20px" valign="bottom">
