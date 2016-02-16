@@ -9,9 +9,9 @@ class EventosController < ApplicationController
   end
 
   def show
-  	@evento=Evento.find(params[:id])
+  	@evento=Evento.where("id=?",params[:id]).first
 
-  	@tallers=Taller.all
+  	@tallers=Taller.where("evento_id=?",@evento.id)
   end
 
 
