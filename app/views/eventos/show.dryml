@@ -23,7 +23,7 @@
 	<div class="row hero">
 	<%@tallers.each do |taller|%>
 	<div class="span3">
-	<table>
+	<table class="table table-bordered table-striped responsive-utilities">
 		<tr>
 			<td heigh="20px" valign="bottom">
 				<h3><%=taller.nombre%><br/></h3>
