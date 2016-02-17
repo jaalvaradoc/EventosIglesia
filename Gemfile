@@ -46,7 +46,7 @@ end
 
 gem "hobo", "= 2.1.1"
 gem "protected_attributes","1.1.3"
-# Hobo has a lot of assets.   Stop cluttering the log in development mode.
+
 gem "quiet_assets", group: :development
 # Hobo's version of will_paginate is required.
 gem "hobo_will_paginate", "2.1.1"
