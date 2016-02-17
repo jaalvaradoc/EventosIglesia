@@ -34,12 +34,14 @@
 			<%= image_tag(taller.imagen, size: "250x250", alt: "#{taller.nombre}")%>
 		</td>
 	</tr>
-	</table>
+	</table><center>
 	<%= link_to 'Ver Detalles', "/tallers/#{taller.id}", :class =>"btn btn-small btn-primary" %>&nbsp;&nbsp;
 	<%if !current_user.administrator?&&!current_user.guest?%>
 	<%= link_to 'Inscribirse', "/eventos/#{@evento.id}/tallers/new" , :class =>"btn btn-small btn-success"%>
+
 	<%end%>
-	<br/>
+	</center>
+	<br/><br/>
 	</div> 
 
 	<%end%>
