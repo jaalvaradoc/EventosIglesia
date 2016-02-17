@@ -11,10 +11,10 @@
   <br/>
   <%end%>
   </header>
-  <div class="row">
+  <div class="row container">
 	<%@eventos.each do |evento|%>
   <div class="span4">
-  <table>
+  <table class="table table-bordered table-striped responsive-utilities">
     <tr>
       <td heigh="20px" valign="bottom">
 	<h3><%=evento.nombre%></h3>
@@ -27,6 +27,7 @@
   </tr>
   </table>
 	<%= link_to 'Ver talleres', "eventos/#{evento.id}", :class => "btn btn-small btn-primary" %>
+  <br/><br/>
 	</div> 
 	<%end%>
   </div>
