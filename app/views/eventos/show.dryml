@@ -1,10 +1,10 @@
 
-<page title="Home">
+<page title="Eventos">
 
-  <body: class="front-page"/>
+  <body: class="celeste"/>
 
   <content:>
-	<div class="row hero-unit">
+	<div class="row caja-azul">
 		<div class="span">
 		<%= image_tag(@evento.imagen, size: "300x300", alt: "#{@evento.nombre}")%><br/></div><div class="span">
 		<h2><%=@evento.nombre%></h2><br/>
@@ -20,7 +20,7 @@
 		</div>
 	</div>
 	<h2>Talleres</h2><br/>
-	<div class="row hero">
+	<div class="row">
 	<%@tallers.each do |taller|%>
 	<div class="span3">
 	<table class="table table-bordered table-striped responsive-utilities">

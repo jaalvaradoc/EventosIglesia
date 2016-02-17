@@ -1,9 +1,9 @@
-<page title="Home">
+<page title="Eventos">
 
-  <body: class="front-page"/>
+  <body: class="celeste"/>
 
   <content:>
-    <header class="row hero-unit">
+    <header class="caja-azul">
       <h2>Eventos</h2>
     
 <%if current_user.administrator?%>

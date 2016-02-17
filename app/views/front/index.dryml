@@ -1,9 +1,9 @@
-<page title="Home">
+<page title="Inicio">
 
-  <body: class="front-page"/>
+  <body: class="celeste"/>
 
   <content:>
-    <header class="content-header hero-unit">
+    <header class="caja-azul">
       <section class="welcome-message">
         <h3>Bienvenido!</h3>
         <ul>

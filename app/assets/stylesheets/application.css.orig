@@ -11,3 +11,8 @@
  *= require_self
  *= require_tree .
  */
+div.navbar {
+    overflow: visible;
+    margin-bottom: 20px;
+    background-color: "black";
+    }

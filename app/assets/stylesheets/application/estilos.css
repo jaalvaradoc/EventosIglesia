@@ -1,0 +1,14 @@
+.caja-azul {
+    padding: 30px;
+    margin-bottom: 30px;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 30px;
+    color: white;
+    background-color: #0B2161;
+    border-radius: 6px;
+}
+
+.celeste {
+	background-color: #adc5ff;
+}

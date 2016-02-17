@@ -11,8 +11,8 @@
 <include gem='hobo_bootstrap_ui'/>
 
 <include src="taglibs/auto/rapid/cards"/>
-<include src="taglibs/auto/rapid/pages"/>
 <include src="taglibs/auto/rapid/forms"/>
+<include src="taglibs/auto/rapid/pages"/>
 
 <include src="application"/>
 
