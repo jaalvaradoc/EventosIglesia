@@ -12,4 +12,14 @@
 
 .celeste {
 	background-color: #e6f3ff;
+    margin-top:60px;
+}
+
+.navbar{
+    position: fixed;
+    margin-top: 0px;
+    width:100%;
+    background-image:none;
+    top: 0;
+    height:60px ;
 }
