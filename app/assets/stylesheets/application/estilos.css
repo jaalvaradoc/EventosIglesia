@@ -10,7 +10,8 @@
     background-size: cover;
     background-image: url("http://www.extingasdelperu.com/wp-content/uploads/2014/02/FondoAzulDegradadoCentro.png");
     opacity: 0.85;
-    background-position: back;
+    background-size: cover;
+    z-index: 0;
 }
 
 .celeste {
