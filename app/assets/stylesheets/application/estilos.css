@@ -35,3 +35,7 @@
 .imagenes{
     opacity: 1;
 }
+
+body{
+    margin-top:60px;
+}
