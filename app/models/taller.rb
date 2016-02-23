@@ -8,10 +8,11 @@ class Taller < ActiveRecord::Base
     imagen :string
     hora :string
     lugar :string
+    cupo :integer
     timestamps
   end
 
-  attr_accessible :nombre, :descripcion, :imagen, :hora, :lugar, :evento, :evento_id
+  attr_accessible :nombre, :descripcion, :imagen, :hora, :lugar, :cupo, :evento, :evento_id
 
   belongs_to :evento, :inverse_of => :tallers, :counter_cache => true
 

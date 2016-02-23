@@ -31,7 +31,12 @@
 		</tr>
 	<tr>
 		<td height="200px" valign="top">
-			<%= image_tag(taller.imagen, size: "250x250", alt: "#{taller.nombre}")%>
+			<%= image_tag(taller.imagen, size: "250x250", alt: "#{taller.nombre}", :class =>"imagenes")%>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			Cupos: <%=taller.cupo.to_s%>
 		</td>
 	</tr>
 	</table><center>

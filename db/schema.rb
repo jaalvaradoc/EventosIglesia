@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160210203706) do
+ActiveRecord::Schema.define(version: 20160222233839) do
 
   create_table "eventos", force: true do |t|
     t.string   "nombre"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20160210203706) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "evento_id"
+    t.integer  "cupo"
   end
 
   add_index "tallers", ["evento_id"], name: "index_tallers_on_evento_id"
