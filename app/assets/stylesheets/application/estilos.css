@@ -18,7 +18,7 @@
 	background-color: #e6f3ff;
     margin-top:60px;
     background-image: url("http://fondopantalla.com.es/file/421/1680x1050/crop/fondo-de-pantalla-degradado-azul.jpg");
-    background-size: contain;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
