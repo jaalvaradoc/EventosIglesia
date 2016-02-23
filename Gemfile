@@ -55,3 +55,7 @@ gem "hobo_jquery_ui", "2.1.1"
 gem "hobo_bootstrap_ui", "2.1.1"
 gem "jquery-ui-themes", "0.0.11"
 gem "hobo_clean_admin", "2.1.1"
+
+
+#Para subir las imagenes!!!!!!!!!
+gem "paperclip" , git: 'git://github.com/thoughtbot/paperclip.git'
