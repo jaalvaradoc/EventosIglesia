@@ -10,14 +10,14 @@
     background-size: cover;
     background-image: url("http://www.extingasdelperu.com/wp-content/uploads/2014/02/FondoAzulDegradadoCentro.png");
     opacity: 0.85;
-    background-size: cover;
-    z-index: 0;
+    z-index: -1;
 }
 
 .celeste {
 	background-color: #e6f3ff;
     margin-top:60px;
     background-image: url("http://fondopantalla.com.es/file/421/1680x1050/crop/fondo-de-pantalla-degradado-azul.jpg");
+    background-size: cover;
 }
 
 .navbar{
