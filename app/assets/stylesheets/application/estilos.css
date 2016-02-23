@@ -29,6 +29,8 @@
     top: 0;
     height:60px ;
     z-index: 10;
+    background-color: #0B0B3B;
+    color:white;
 }
 .imagenes{
     opacity: 1;
