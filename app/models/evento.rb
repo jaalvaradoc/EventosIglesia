@@ -11,7 +11,6 @@ class Evento < ActiveRecord::Base
   end
 
   attr_accessible :nombre, :descripcion, :lugar, :hora, :imagen, :tallers
-  has_attached_file :image, styles: { medium: '200x200>', thumb: '48x48>' }
 
   has_many :tallers, :dependent => :destroy, :inverse_of => :evento
 

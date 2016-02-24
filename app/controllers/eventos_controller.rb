@@ -14,5 +14,9 @@ class EventosController < ApplicationController
   	@tallers=Taller.where("evento_id=?",@evento.id)
   end
 
+  def edit
+  	@evento=Evento.where("id=?",params[:id]).first
+  end
+
 
 end

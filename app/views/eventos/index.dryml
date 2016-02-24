@@ -28,6 +28,10 @@
   </table>
   <center>
 	<%= link_to 'Ver talleres', "eventos/#{evento.id}", :class => "btn btn-small btn-primary" %>
+  <%if current_user.administrator?%>
+  <%= link_to 'Editar Evento', "eventos/#{evento.id}/edit", :class => "btn btn-small btn-success" %>
+  <%end%>
+  
   </center>
   <br/><br/>
 	</div> 

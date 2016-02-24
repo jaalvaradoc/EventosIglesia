@@ -8,5 +8,218 @@ you can place common code in this file. -->
     <nav-item href="#{base_url}/">Inicio</nav-item>
     <nav-item with="&Evento"><ht key="evento.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
   </navigation>
+
 </def>
 
+
+
+
+<!-- ===========Evento=Editar============== -->
+
+<def tag="edit-page" for="Evento">
+  <page merge title="#{ht 'evento.edit.title', :default=>['Edit Evento'], :name => name(:no_wrapper => true) }">
+
+    <body: class="celeste" param/>
+
+    <content-header: class="caja-azul"  param>
+      <h2 param="heading">
+        <ht key="evento.edit.heading" name="#{name(:no_wrapper => true)}">
+          Editar "<%=@evento.nombre%>"
+        </ht>
+      </h2>
+      <delete-button label="#{ht 'evento.actions.delete', :default=>['Eliminar este Evento']}" param/>
+    </content-header:>
+
+    <content-body: class="caja-azul" param>
+      <form param/>
+    </content-body:>
+
+  </page>
+</def>
+
+<def tag="form" for="Evento">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="nombre, descripcion, imagen" param/>
+    <div param="actions">
+      <submit label="#{ht 'evento.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def> 
+
+<!-- ===========Evento=Nuevo============== -->
+<def tag="new-page" for="Evento">
+  <page merge title="#{ht 'evento.new.title', :default=>[' New Evento'] }">
+    <body: class="celeste" param/>
+
+    <content-header: class="caja-azul" param>
+      <h2 param="heading">
+        <ht key="evento.new.heading">
+          Nuevo Evento
+        </ht>
+      </h2>
+    </content-header:>
+
+    <content-body: class="caja-azul" param>
+      <form  param>
+        <submit: label="#{ht 'evento.actions.create', :default=>['Crear Evento']}"/>
+      </form>
+    </content-body:>
+  </page>
+</def>
+
+
+
+<!--=================Usuario====================-->
+<def tag="index-page" for="User">
+  <page merge title="#{ht 'user.index.title', :default=>[model.model_name.human(:count=>100)] }">
+    <body: class="celeste" param/>
+
+    <content-header: class="caja-azul" param>
+      <h2 param="heading">
+        <ht key="user.index.heading">
+          <model-name-human model="&model"/>
+        </ht>
+      </h2>
+
+      <p param="count" if>
+        <ht key="user.collection.count" count="&collection_count">
+          <count summary/>
+        </ht>
+      </p>
+    </content-header:>
+
+    <content-body: class="caja-azul" param>
+
+      <page-nav param="top-page-nav"/>
+
+      <collection param/>
+
+      <page-nav param="bottom-page-nav"/>
+
+
+      <div param="new-form">
+        <h3 param="new-form-heading">
+          <ht key="user.form.new.heading">New User</ht>
+        </h3>
+        <form with="&@invalid_record || new_for_current_user(User)" param/>
+      </div>
+
+    </content-body:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="User">
+  <page merge title="#{ht 'user.new.title', :default=>[' New User'] }">
+    <body: class="celeste" param/>
+
+    <content-header: class="caja-azul" param>
+      <h2 param="heading">
+        <ht key="user.new.heading">
+          New User
+        </ht>
+      </h2>
+    </content-header:>
+
+    <content-body: class="caja-azul" param>
+      <form param>
+        <submit: label="#{ht 'user.actions.create', :default=>['Create User']}"/>
+      </form>
+    </content-body:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="User">
+  <page merge title="#{ht 'user.show.title', :default=>['User'], :name => name(:no_wrapper => true) }" without-aside >
+
+    <body: class="celeste" param/>
+
+    <content-header: class="caja-azul" param>
+      <h2 param="heading">
+        <ht key="user.show.heading" name="#{name(:no_wrapper => true)}">
+          User <name/>
+        </ht>
+      </h2>
+
+      <record-flags fields="administrator" param/>
+
+      <a action="edit" if="&can_edit?" param="edit-link">
+        <ht key="user.actions.edit" name="#{name(:no_wrapper => true)}">
+          Edit User
+        </ht>
+      </a>
+    </content-header:>
+
+    <content-body: class="caja-azul" param>
+      <field-list fields="email_address, state" param/>
+    </content-body:>
+
+  </page>
+</def>
+
+
+<def tag="edit-page" for="User">
+  <page merge title="#{ht 'user.edit.title', :default=>['Edit User'], :name => name(:no_wrapper => true) }">
+
+    <body: class="celeste" param/>
+
+    <content-header: class="caja-azul" param>
+      <h2 param="heading">
+        <ht key="user.edit.heading" name="#{name(:no_wrapper => true)}">
+          Edit User
+        </ht>
+      </h2>
+      <delete-button label="#{ht 'user.actions.delete', :default=>['Remove This User']}" param/>
+    </content-header:>
+
+    <content-body: class="caja-azul" param>
+      <form param/>
+    </content-body:>
+
+  </page>
+</def>
+
+<def tag="signup-page" polymorphic/>
+<def tag="signup-page" for="User">
+
+  <page title="#{ht 'user.signup.title', :default=>['Signup']}" merge>
+
+    <body: class="celeste" param/>
+
+    <content-header: class="caja-azul" param>
+      <h2 param="heading">
+        <ht key="user.signup.heading">
+          Signup
+        </ht>
+      </h2>
+    </content-header:>
+
+    <content-body: class="caja-azul" param>
+      <signup-form param="form"/>
+    </content-body:>
+
+  </page>
+</def>
+
+<def tag="reset-password-page" polymorphic/>
+<def tag="reset-password-page" for="User">
+  <page title="#{ht 'user.reset_password.title', :default=>['Reset Password']}" merge>
+
+    <body: class="celeste" param/>
+
+    <content-header: class="caja-azul" param>
+      <h2 param="heading">
+        <ht key="user.reset_password.heading">
+          Reset Password
+        </ht>
+      </h2>
+    </content-header:>
+
+    <content-body: class="caja-azul" param>
+      <reset-password-form param="form"/>
+    </content-body:>
+
+  </page>
+</def>
