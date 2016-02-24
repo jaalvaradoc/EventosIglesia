@@ -193,6 +193,3 @@ DEPENDENCIES
   therubyracer
   turbolinks (= 2.5.3)
   uglifier (= 2.7.2)
-
-BUNDLED WITH
-   1.11.2
