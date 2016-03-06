@@ -18,3 +18,4 @@ app/views/taglibs/auto/**/*
 config/hobo_routes.rb
 prueba.txt
 prueba1.txt
+Gemfile.lock
