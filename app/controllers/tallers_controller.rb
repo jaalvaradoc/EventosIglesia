@@ -6,4 +6,6 @@ class TallersController < ApplicationController
 
   auto_actions_for :evento, [:new, :create]
 
+  
+
 end

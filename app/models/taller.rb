@@ -34,4 +34,5 @@ class Taller < ActiveRecord::Base
     true
   end
 
+
 end
