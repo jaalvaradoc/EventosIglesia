@@ -41,6 +41,7 @@ you can place common code in this file. -->
   <form merge param="default">
     <error-messages param/>
     <field-list fields="nombre, descripcion, imagen" param/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=file_field_tag :foto, class: 'btn btn-success', accept:'image/jpeg,image/png,image/jpg'%>
     <div param="actions">
       <submit label="#{ht 'evento.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -220,6 +221,160 @@ you can place common code in this file. -->
     <content-body: class="caja-azul" param>
       <reset-password-form param="form"/>
     </content-body:>
+  </page>
+</def>
+
+<!-- ====== Taller Pages ====== -->
+
+<def tag="index-page" for="Taller">
+  <page merge title="#{ht 'taller.index.title', :default=>[model.model_name.human(:count=>100)] }">
+    <body: class="celeste" param/>
+
+    <content-header: class="caja-azul" param>
+      <h2 param="heading">
+        <ht key="taller.index.heading">
+          <model-name-human model="&model"/>
+        </ht>
+      </h2>
+
+      <p param="count" if>
+        <ht key="taller.collection.count" count="&collection_count">
+          <count summary/>
+        </ht>
+      </p>
+    </content-header:>
+
+    <content-body: class="caja-azul" param>
+      <a action="new" to="&model" param="new-link">
+        <ht key="taller.actions.new">New Taller</ht>
+      </a>
+
+      <page-nav param="top-page-nav"/>
+
+      <collection param/>
+
+      <page-nav param="bottom-page-nav"/>
+
+
+    </content-body:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="Taller">
+  <page merge title="#{ht 'taller.new.title', :default=>[' New Taller'] }">
+    <body: class="celeste" param/>
+
+    <content-header: class="caja-azul" param>
+      <h2 param="heading">
+
+          Nuev Taller
+
+      </h2>
+    </content-header:>
+
+    <content-body: class="caja-azul" param>
+      <form params>
+
+        <submit: label="#{ht 'taller.actions.create', :default=>['Create Taller']}"/>
+      </form>
+    </content-body:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="Taller">
+  <page merge title="#{ht 'taller.show.title', :default=>['Taller'], :name => name(:no_wrapper => true) }" without-aside >
+
+    <body: class="celeste" param/>
+
+    <content-header: class="caja-azul" param>
+      <a:evento param="parent-link">&laquo; <ht key="taller.actions.back_to_parent" parent="Evento" name="&this">Volver a <%=@taller.evento%></ht></a:evento>
+      <h2 param="heading">
+          <h2><%=@taller.nombre%></h2>
+      </h2>
+
+      <record-flags fields="" param/>
+
+      <a action="edit" if="&can_edit?" param="edit-link">
+        <ht key="taller.actions.edit" name="#{name(:no_wrapper => true)}">
+          Editar Taller
+        </ht>
+      </a>
+    </content-header:>
+
+    <content-body: class="caja-azul" param>
+    <div class="row">
+      <div class="span3"><%=image_tag(@taller.imagen, :class => "imagenes") %></div>
+      <div class="span3"><field-list fields="descripcion,  hora, lugar, cupo" param>
+      </field-list></div>
+      </div>
+    </content-body:>
 
   </page>
 </def>
+
+
+<def tag="edit-page" for="Taller">
+  <page merge title="#{ht 'taller.edit.title', :default=>['Edit Taller'], :name => name(:no_wrapper => true) }">
+
+    <body: class="celeste" param/>
+
+    <content-header: class="caja-azul" param>
+      <h2 param="heading">
+        <ht key="taller.edit.heading" name="#{name(:no_wrapper => true)}">
+          Edit Taller
+        </ht>
+      </h2>
+      <delete-button label="#{ht 'taller.actions.delete', :default=>['Remove This Taller']}" param/>
+    </content-header:>
+
+    <content-body: class="caja-azul" param>
+      <form param/>
+    </content-body:>
+
+  </page>
+</def>
+
+
+
+<def tag="new-for-evento-page" polymorphic/>
+<def tag="new-for-evento-page" for="Taller">
+  <page merge title="#{ht 'taller.new_for_owner.title', :default=>['New Taller for']} #{name :with => @evento}">
+    <body: class="celeste" param/>
+
+    <content-header: class="caja-azul" param>
+      <h2 param="heading">
+        <ht key="taller.new_for_owner.heading">
+          New Taller
+        </ht>
+      </h2>
+      <h3 param="subheading">
+        <ht key="taller.new_for_owner.subheading">
+          For:
+        </ht>
+        <a with="&@evento"/>
+      </h3>
+    </content-header:>
+
+    <content-body: class="caja-azul" param>
+      <form owner="evento" method="post" param>
+        <field-list: skip="evento"/>
+        <submit: label="#{ht 'taller.actions.create', :default=>['Create Taller']}"/>
+      </form>
+    </content-body:>
+  </page>
+</def>
+
+<def tag="form" for="Taller">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="nombre, descripcion, imagen, hora, lugar, cupo, evento" param/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=file_field_tag :foto, class: 'btn btn-success', accept:'image/jpeg,image/png,image/jpg'%>
+    <div param="actions">
+      <submit label="#{ht 'taller.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
