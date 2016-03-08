@@ -16,8 +16,6 @@ class Evento < ActiveRecord::Base
 
   children :tallers
 
-
-
   # --- Permissions --- #
 
   def create_permitted?
