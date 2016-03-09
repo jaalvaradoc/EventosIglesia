@@ -12,7 +12,10 @@ class Taller < ActiveRecord::Base
     timestamps
   end
 
-  attr_accessible :nombre, :descripcion, :imagen, :hora, :lugar, :cupo, :evento, :evento_id
+  attr_accessible :nombre, :descripcion, :imagen,:cover, :hora, :lugar, :cupo, :evento, :evento_id
+
+  has_attached_file :cover, styles: {medium: "1280x720", thumb:"250x250"}
+  validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
 
   belongs_to :evento, :inverse_of => :tallers, :counter_cache => true
 

@@ -22,3 +22,5 @@ Gemfile.lock
 
 # Ignore all images 
 public/system/eventos/covers/
+public/system/tallers/
+

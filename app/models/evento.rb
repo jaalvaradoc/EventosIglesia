@@ -14,6 +14,7 @@ class Evento < ActiveRecord::Base
 
   has_attached_file :cover, styles: {medium: "1280x720", thumb:"250x250"}
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
+  
   has_many :tallers, :dependent => :destroy, :inverse_of => :evento
 
   children :tallers

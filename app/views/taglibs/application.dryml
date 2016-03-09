@@ -234,6 +234,11 @@ you can place common code in this file. -->
 </def>
 
 <!-- ====== Taller Pages ====== -->
+<extend tag="form" for="Taller">
+  <old-form merge multipart>
+    <field-list: fields="nombre, descripcion, hora, lugar, cupo, evento, cover"/>
+  </old-form>
+</extend>
 
 <def tag="index-page" for="Taller">
   <page merge title="#{ht 'taller.index.title', :default=>[model.model_name.human(:count=>100)] }">
@@ -314,7 +319,7 @@ you can place common code in this file. -->
 
     <content-body: class="caja-azul" param>
     <div class="row">
-      <div class="span3"><%=image_tag(@taller.imagen, :class => "imagenes") %></div>
+      <div class="span3"><%=image_tag(@taller.cover.url(), :class => "imagenes") %></div>
       <div class="span3"><field-list fields="descripcion,  hora, lugar, cupo" param>
       </field-list></div>
       </div>
@@ -378,8 +383,7 @@ you can place common code in this file. -->
 <def tag="form" for="Taller">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="nombre, descripcion, imagen, hora, lugar, cupo, evento" param/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=file_field_tag :foto, class: 'btn btn-success', accept:'image/jpeg,image/png,image/jpg'%>
+    <field-list fields="nombre, descripcion, hora, lugar, cupo, evento, cover" param/>
     <div param="actions">
       <submit label="#{ht 'taller.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
