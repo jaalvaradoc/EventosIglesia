@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/Hobo/hobo_paperclip.git
+  revision: abb4e77b849e78be9f1594b7304b71dc5a76157d
+  branch: master
+  specs:
+    hobo_paperclip (0.0.4)
+      hobo
+      paperclip
+
+GIT
   remote: git://github.com/thoughtbot/paperclip.git
   revision: 37589f9b0c869c8df5be1ee4d83e14fb353a7dff
   specs:
@@ -179,6 +188,7 @@ DEPENDENCIES
   hobo_bootstrap_ui (= 2.1.1)
   hobo_clean_admin (= 2.1.1)
   hobo_jquery_ui (= 2.1.1)
+  hobo_paperclip!
   hobo_will_paginate (= 2.1.1)
   jbuilder (= 1.5.3)
   jquery-rails (= 2.3.0)

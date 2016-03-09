@@ -15,4 +15,5 @@
 <include src="taglibs/auto/rapid/pages"/>
 
 <include src="application"/>
+<include gem='hobo_paperclip'/>
 

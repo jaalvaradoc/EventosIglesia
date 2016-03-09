@@ -10,8 +10,10 @@ class Evento < ActiveRecord::Base
     timestamps
   end
 
-  attr_accessible :nombre, :descripcion, :imagen, :tallers
+  attr_accessible :nombre, :descripcion, :imagen, :tallers, :cover
 
+  has_attached_file :cover, styles: {medium: "1280x720", thumb:"250x250"}
+  validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
   has_many :tallers, :dependent => :destroy, :inverse_of => :evento
 
   children :tallers

@@ -59,3 +59,5 @@ gem "hobo_clean_admin", "2.1.1"
 
 #Para subir las imagenes!!!!!!!!!
 gem "paperclip" , git: 'git://github.com/thoughtbot/paperclip.git'
+
+gem 'hobo_paperclip', :git => "git://github.com/Hobo/hobo_paperclip.git", :branch => "master"

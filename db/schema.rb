@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308194811) do
+ActiveRecord::Schema.define(version: 20160309042341) do
 
   create_table "eventos", force: true do |t|
     t.string   "nombre"
@@ -19,7 +19,11 @@ ActiveRecord::Schema.define(version: 20160308194811) do
     t.string   "imagen"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "tallers_count", default: 0, null: false
+    t.integer  "tallers_count",      default: 0, null: false
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
   end
 
   create_table "tallers", force: true do |t|

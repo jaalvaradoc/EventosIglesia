@@ -6,7 +6,7 @@
   <content:>
 	<div class="row caja-azul">
 		<div class="span">
-		<%= image_tag(@evento.imagen, size: "300x300", alt: "#{@evento.nombre}")%><br/></div><div class="span">
+		<%= image_tag(@evento.cover.url(), alt: "#{@evento.nombre}")%><br/></div><div class="span">
 		<h2><%=@evento.nombre%></h2><br/>
 		Descripci&oacute;n:<br/> <%=@evento.descripcion%><br/>
 		
@@ -30,7 +30,7 @@
 			</td>
 		</tr>
 	<tr>
-		<td height="200px" valign="top">
+		<td height="250px" valign="top">
 			<%= image_tag(taller.imagen, size: "250x250", alt: "#{taller.nombre}", :class =>"imagenes")%>
 		</td>
 		</tr>

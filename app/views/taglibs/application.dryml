@@ -16,6 +16,15 @@ you can place common code in this file. -->
 
 <!-- ===========Evento=Editar============== -->
 
+<def tag="input" for="Paperclip::Attachment">
+   <%= file_field_tag :cover, class: 'btn btn-success', accept:'image/jpeg,image/png,image/jpg' %>
+ </def>
+ <extend tag="form" for="Evento">
+  <old-form merge multipart>
+    <field-list: fields="nombre, descripcion, cover"/>
+  </old-form>
+</extend>
+
 <def tag="edit-page" for="Evento">
   <page merge title="#{ht 'evento.edit.title', :default=>['Edit Evento'], :name => name(:no_wrapper => true) }">
 
@@ -40,8 +49,8 @@ you can place common code in this file. -->
 <def tag="form" for="Evento">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="nombre, descripcion, imagen" param/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=file_field_tag :foto, class: 'btn btn-success', accept:'image/jpeg,image/png,image/jpg'%>
+    <field-list fields="nombre, descripcion, cover" param/>
+    
     <div param="actions">
       <submit label="#{ht 'evento.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
