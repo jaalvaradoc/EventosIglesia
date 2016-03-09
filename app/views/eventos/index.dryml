@@ -13,7 +13,7 @@
   </header>
   <div class="row container">
 	<%@eventos.each do |evento|%>
-  <div class="span4">
+  <div class="span3">
   <table class="table table-bordered table-striped responsive-utilities">
     <tr>
       <td heigh="20px" valign="bottom">
