@@ -22,7 +22,7 @@
     </tr>
   <tr>
     <td height="250px" valign="top">
-	<%= image_tag(evento.imagen, size: "250x250", alt: "#{evento.nombre}")%>
+	<%= image_tag(evento.cover.url(), size: "250x250", alt: "#{evento.nombre}")%>
   </td>
   </tr>
   </table>
