@@ -6,7 +6,7 @@
   <content:>
 	<div class="row caja-azul">
 		<div class="span">
-		<%= image_tag(@evento.cover.url(), alt: "#{@evento.nombre}")%><br/></div><div class="span">
+		<%= image_tag(@evento.cover.url(),size: "250x250", alt: "#{@evento.nombre}")%><br/></div><div class="span">
 		<h2><%=@evento.nombre%></h2><br/>
 		Descripci&oacute;n:<br/> <%=@evento.descripcion%><br/>
 		
