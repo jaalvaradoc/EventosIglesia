@@ -236,7 +236,7 @@ you can place common code in this file. -->
 <!-- ====== Taller Pages ====== -->
 <extend tag="form" for="Taller">
   <old-form merge multipart>
-    <field-list: fields="nombre, descripcion, hora, lugar, cupo, evento, cover"/>
+    <field-list: fields="nombre, descripcion, lugar, cupo, evento, cover"/>
   </old-form>
 </extend>
 
@@ -320,7 +320,7 @@ you can place common code in this file. -->
     <content-body: class="caja-azul" param>
     <div class="row">
       <div class="span3"><%=image_tag(@taller.cover.url(:thumb), :class => "imagenes") %></div>
-      <div class="span3"><field-list fields="descripcion,  hora, lugar, cupo" param>
+      <div class="span3"><field-list fields="descripcion, lugar, cupo" param>
       </field-list></div>
       </div>
     </content-body:>
@@ -383,7 +383,7 @@ you can place common code in this file. -->
 <def tag="form" for="Taller">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="nombre, descripcion, hora, lugar, cupo, evento, cover" param/>
+    <field-list fields="nombre, descripcion, lugar, cupo, evento, cover" param/>
     <div param="actions">
       <submit label="#{ht 'taller.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>

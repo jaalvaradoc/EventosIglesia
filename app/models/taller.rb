@@ -6,13 +6,12 @@ class Taller < ActiveRecord::Base
     nombre :string
     descripcion :string
     imagen :string
-    hora :string
     lugar :string
     cupo :integer
     timestamps
   end
 
-  attr_accessible :nombre, :descripcion, :imagen,:cover, :hora, :lugar, :cupo, :evento, :evento_id
+  attr_accessible :nombre, :descripcion, :imagen,:cover, :lugar, :cupo, :evento, :evento_id
 
   has_attached_file :cover, styles: {medium: "1280x720", thumb:"250x250"}
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
