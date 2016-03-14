@@ -6,13 +6,9 @@ you can place common code in this file. -->
 <def tag="main-nav">
   <navigation class="main-nav" merge-attrs param="default">
     <nav-item href="#{base_url}/">Inicio</nav-item>
-    <nav-item with="&Evento"><ht key="evento.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
+    <nav-item with="&Evento"><ht key="evento.nav_item" count="100">Evento</ht></nav-item>
   </navigation>
-
 </def>
-
-
-
 
 <!-- ===========Evento=Editar============== -->
 
@@ -191,7 +187,18 @@ you can place common code in this file. -->
   </page>
 </def>
 
-<def tag="signup-page" polymorphic/>
+
+<def tag="signup-form" polymorphic/>
+<def tag="signup-form" for="User">
+  <form lifecycle="signup" merge param="default">
+    <error-messages param/>
+    <field-list fields="name, email_address, password, password_confirmation" param/>
+    <div param="actions">
+      <submit label="#{ht 'user.actions.signup', :default=>['Signup']}" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
 <def tag="signup-page" for="User">
 
   <page title="#{ht 'user.signup.title', :default=>['Signup']}" merge>
@@ -213,8 +220,7 @@ you can place common code in this file. -->
   </page>
 </def>
 
-<def tag="reset-password-page" polymorphic/>
-<def tag="reset-password-page" for="User">
+<def tag="account" for="User">
   <page title="#{ht 'user.reset_password.title', :default=>['Reset Password']}" merge>
 
     <body: class="celeste" param/>
@@ -320,7 +326,7 @@ you can place common code in this file. -->
     <content-body: class="caja-azul" param>
     <div class="row">
       <div class="span3"><%=image_tag(@taller.cover.url(:thumb), :class => "imagenes") %></div>
-      <div class="span3"><field-list fields="descripcion, lugar, cupo" param>
+      <div class="span"><field-list fields="descripcion, lugar, cupo" param>
       </field-list></div>
       </div>
     </content-body:>

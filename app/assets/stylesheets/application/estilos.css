@@ -12,6 +12,7 @@
     opacity: 0.85;
     position:relative;
     z-index: 1;
+    word-wrap: break-word;
 }
 
 .celeste {
@@ -26,9 +27,10 @@
 .navbar{
     position: fixed;
     margin-top: 0px;
-    width:100%;
     background-image:none;
     top: 0;
+    right: 10px;
+    left:10px;
     height:60px ;
     z-index: 10;
     margin-right: 20px;
@@ -39,4 +41,19 @@
 
 .btn{
     z-index:1;
+}
+
+.navbar-inner {
+    min-height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: black;
+    background-image: linear-gradient(to bottom, black, black);
+    background-repeat: repeat-x;
+    border: 1px solid #D4D4D4;
+    border-radius: 4px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.067);
+}
+.navbar-innner{
+    background-image: linear-gradient(to bottom, gray, black);
 }
