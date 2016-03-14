@@ -78,4 +78,17 @@ Eventosiglesia::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
   Paperclip.options[:command_path] = "/usr/local/bin/"  
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_region => 'us-east-1',
+    :s3_credentials => {
+      :bucket =>'ciaeventos', 
+      :access_key_id => 'AKIAJLCMNNSWMSVQ4WSA', 
+      :secret_access_key => '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'
+    }
+    
+  }
+
+
 end

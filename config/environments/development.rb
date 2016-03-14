@@ -29,6 +29,18 @@ Eventosiglesia::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_region => 'us-east-1',
+    :s3_credentials => {
+      :bucket =>'ciaeventos', 
+      :access_key_id => 'AKIAJLCMNNSWMSVQ4WSA', 
+      :secret_access_key => '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'
+    }
+    
+  }
+  #ENV['AWS_REGION']=>
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

@@ -29,6 +29,6 @@ module Eventosiglesia
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :es
 
-    config.hobo.app_name="Ig-Eventos"
+    config.hobo.app_name="Eventos CIA"
   end
 end
