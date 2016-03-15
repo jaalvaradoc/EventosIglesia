@@ -12,7 +12,7 @@
   <%end%>
   </header>
   <div class="row container">
-	<%@eventos.each do |evento|%>
+	<%@eventos.reverse_each do |evento|%>
   <div class="span3">
   <table class="table table-bordered table-striped responsive-utilities">
     <tr>
