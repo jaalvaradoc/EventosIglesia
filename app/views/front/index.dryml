@@ -22,6 +22,35 @@
     </header>
 
     <section class="content-body">
+<% if User.count != 0 -%>
+<h2>Ultimos Eventos</h2><br/>
+    <div class="row container">
+  <%@eventos.reverse_each do |evento|%>
+  <div class="span3">
+  <table class="table table-bordered table-striped responsive-utilities">
+    <tr>
+      <td heigh="20px" valign="bottom">
+  <h3><%=evento.nombre%></h3>
+  </td>
+    </tr>
+  <tr>
+    <td height="250px" valign="top">
+  <%= image_tag(evento.cover.url(:thumb), size: "250x250", alt: "#{evento.nombre}")%>
+  </td>
+  </tr>
+  </table>
+  <center>
+  <%= link_to 'Ver talleres', "eventos/#{evento.id}", :class => "btn btn-small btn-primary" %>
+  <%if current_user.administrator?%>
+  <%= link_to 'Editar Evento', "eventos/#{evento.id}/edit", :class => "btn btn-small btn-success" %>
+  <%end%>
+  
+  </center>
+  <br/><br/>
+  </div> 
+  <%end%>
+  </div>
+  <%end -%>
     </section>
   </content:>
 

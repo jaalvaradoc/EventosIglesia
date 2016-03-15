@@ -2,7 +2,11 @@ class FrontController < ApplicationController
 
   hobo_controller
 
-  def index; end
+  #def index; end
+
+  def index 
+    @eventos=Evento.last(8)
+  end
 
   def summary
     if !current_user.administrator?
