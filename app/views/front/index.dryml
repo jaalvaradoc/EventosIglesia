@@ -29,7 +29,7 @@
   <div class="span3">
   <table class="table table-bordered table-striped responsive-utilities">
     <tr>
-      <td heigh="20px" valign="bottom">
+      <td class ="caja-azul" heigh="20px" valign="bottom">
   <h3><%=evento.nombre%></h3>
   </td>
     </tr>
