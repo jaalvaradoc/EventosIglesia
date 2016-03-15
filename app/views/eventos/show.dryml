@@ -45,6 +45,10 @@
 	<%= link_to 'Inscribirse', "/eventos/#{@evento.id}/tallers/new" , :class =>"btn btn-small btn-success"%>
 
 	<%end%>
+	<%if current_user.guest?%>
+	<%= link_to 'Inscribirse', user_login_path , :class =>"btn btn-small btn-success"%>
+
+	<%end%>
 	</center>
 	<br/><br/>
 	</div> 
