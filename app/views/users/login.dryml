@@ -6,7 +6,10 @@
   <form: >
   
 <div class="padre-login">
-<div class="hijo-login">
+
+<table width="240px" class="hijo-login">
+<tr>
+<td>
 		<div  >
 		  Correo:
 		</div>
@@ -32,7 +35,9 @@
 			<input checked="false" class="remember-me-input" id="remember-me" name="remember_me" type="checkbox" /> Recordarme
 		</div>
 	</div>
-</div>
+	</td>
+	</tr>
+</table>
 	<center>
 	<div>
 		<button type="submit" class="btn btn-primary">Aceptar</button>
