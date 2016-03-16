@@ -1,4 +1,4 @@
-<login-page without-forgot-password class="celeste">
+<login-page without-forgot-password >
 <content-header: class="caja-azul">
 <script src="https://apis.google.com/js/client:platform.js" async defer></script>
 <center><h1>Inicio de sesión</h1></center>

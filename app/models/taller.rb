@@ -18,6 +18,7 @@ class Taller < ActiveRecord::Base
 
   belongs_to :evento, :inverse_of => :tallers, :counter_cache => true
 
+
   def s3_credentials
     {:bucket => "ciaeventos", :access_key_id => "AKIAJLCMNNSWMSVQ4WSA", :secret_access_key => "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"}
   end
