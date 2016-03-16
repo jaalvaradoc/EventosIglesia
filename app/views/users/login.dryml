@@ -4,69 +4,54 @@
 <center><h1>Inicio de sesión</h1></center>
 </content-header:>
   <form: >
-<table >
-
-
-<tr>
-		<th >
+  
+<div class="padre-login">
+<div class="hijo-login">
+		<div  >
 		  Correo:
-		</th>
-		 <td>
+		</div>
+		 <div>
 		   <input class="string login-input" id="login" name="login" type="email" 
 		  	required autofocus /> <i class="icon-user"></i>
 		  	<!--placeholder="usuario@ujmd.edu.sv"--> 
-		</td>
-</tr>
+		</div>
 
-<tr>
-	<th class="password-label">
-		Contraseña
-	</th>
-	<td>
+
+
+	<div class="password-label">
+		Contraseña:
+	</div>
+	<div>
 		<input class="string password-input" id="password" name="password" type="password" required /> <i class="icon-lock"></i>
-	</td>
-</tr>
+	</div>
 
 
-	<tr class="remember-me"> 
-		<th class="field-label remember-me-label">
-			Recordarme en este equipo
-		</th>
-		<td>
-			<input checked="false" class="remember-me-input" id="remember-me" name="remember_me" type="checkbox" />
-		</td>
-	</tr>
-<tr>
-	<td>
-	</td>
-	<td>
+
+	<div class="remember-me"> 
+		<div class="field-label remember-me-label">
+			<input checked="false" class="remember-me-input" id="remember-me" name="remember_me" type="checkbox" /> Recordarme
+		</div>
+	</div>
+</div>
+	<center>
+	<div>
 		<button type="submit" class="btn btn-primary">Aceptar</button>
 		<button type="button" class="btn" onClick="location.href='/'" >Cancelar</button>
-	</td>
-</tr>
+	
 
-		<tr>
-			<td>
-			</td>
-			<td>
-				<div class='forgot-password'><a href='/forgot_password'>¿Has olvidado tu contraseña?</a></div>
-			</td>
-		</tr>
-		<tr>
-		<th class="login-label">
-		 
-		</th>
-		 <td> También puedes iniciar sesión con Google
-		 <br/>
-
+	</div>
 		
-		
+	<div class='forgot-password'>
+		<a href='/forgot_password'>¿Has olvidado tu contraseña?</a>
+	</div>
+	
+	<div> También puedes iniciar sesión con Google
+		<br/>
 		<a href="/auth/google_oauth2" class="g-signin" data-toggle="tooltip" title="También puedes iniciar sesión con tu cuenta de Google" > <%=image_tag("/imagenes/google.png", size: "175x100")%> </a>
-		
-		</td>
-</tr>
+	</div>
+	</center>
 
-</table>
+</div>
   </form:>
 
 </login-page>

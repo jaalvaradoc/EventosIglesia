@@ -15,10 +15,22 @@
     word-wrap: break-word;
 }
 
+.padre-login{
+    text-align: center;
+    width: 100%;
+}
+
+.hijo-login{
+    display: inline-block;
+    text-align: left;
+    margin-left: 25%;
+    margin-right: 25%;       
+}
+
 .forgot-password-page, .login-page, .celeste {
 	background-color: #e6f3ff;
     margin-top:60px;
-    background-image: url("http://igeventos.tk/imagenes/fondo.png");
+    background-image: url("/imagenes/fondo.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
