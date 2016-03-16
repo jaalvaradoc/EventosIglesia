@@ -15,7 +15,8 @@
 		</div>
 		 <div>
 		   <input class="string login-input" id="login" name="login" type="email" 
-		  	required autofocus /> <i class="icon-user"></i>
+		  	required autofocus /> 
+		  	<!--<i class="icon-user"></i>-->
 		  	<!--placeholder="usuario@ujmd.edu.sv"--> 
 		</div>
 
@@ -25,7 +26,7 @@
 		Contraseña:
 	</div>
 	<div>
-		<input class="string password-input" id="password" name="password" type="password" required /> <i class="icon-lock"></i>
+		<input class="string password-input" id="password" name="password" type="password" required /> <!--<i class="icon-lock"></i>-->
 	</div>
 
 
