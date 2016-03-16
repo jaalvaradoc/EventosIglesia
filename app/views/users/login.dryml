@@ -1,0 +1,72 @@
+<login-page without-forgot-password class="celeste">
+<content-header: class="caja-azul">
+<script src="https://apis.google.com/js/client:platform.js" async defer></script>
+<center><h1>Inicio de sesión</h1></center>
+</content-header:>
+  <form: >
+<table >
+
+
+<tr>
+		<th >
+		  Correo:
+		</th>
+		 <td>
+		   <input class="string login-input" id="login" name="login" type="email" 
+		  	required autofocus /> <i class="icon-user"></i>
+		  	<!--placeholder="usuario@ujmd.edu.sv"--> 
+		</td>
+</tr>
+
+<tr>
+	<th class="password-label">
+		Contraseña
+	</th>
+	<td>
+		<input class="string password-input" id="password" name="password" type="password" required /> <i class="icon-lock"></i>
+	</td>
+</tr>
+
+
+	<tr class="remember-me"> 
+		<th class="field-label remember-me-label">
+			Recordarme en este equipo
+		</th>
+		<td>
+			<input checked="false" class="remember-me-input" id="remember-me" name="remember_me" type="checkbox" />
+		</td>
+	</tr>
+<tr>
+	<td>
+	</td>
+	<td>
+		<button type="submit" class="btn btn-primary">Aceptar</button>
+		<button type="button" class="btn" onClick="location.href='/'" >Cancelar</button>
+	</td>
+</tr>
+
+		<tr>
+			<td>
+			</td>
+			<td>
+				<div class='forgot-password'><a href='/forgot_password'>¿Has olvidado tu contraseña?</a></div>
+			</td>
+		</tr>
+		<tr>
+		<th class="login-label">
+		 
+		</th>
+		 <td> También puedes iniciar sesión con Google
+		 <br/>
+
+		
+		
+		<a href="/auth/google_oauth2" class="g-signin" data-toggle="tooltip" title="También puedes iniciar sesión con tu cuenta de Google" > <%=image_tag("/imagenes/google.png", size: "175x100")%> </a>
+		
+		</td>
+</tr>
+
+</table>
+  </form:>
+
+</login-page>

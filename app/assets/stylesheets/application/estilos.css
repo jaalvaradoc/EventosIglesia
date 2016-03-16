@@ -1,4 +1,4 @@
-.caja-azul {
+  .well, .caja-azul {
     padding: 30px;
     margin-bottom: 30px;
     font-size: 18px;
@@ -15,13 +15,18 @@
     word-wrap: break-word;
 }
 
-.celeste {
+.forgot-password-page, .login-page, .celeste {
 	background-color: #e6f3ff;
     margin-top:60px;
     background-image: url("http://igeventos.tk/imagenes/fondo.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
+
+.actions {
+    background-color: blue;
+    width: 250px;
 }
 
 .navbar{
