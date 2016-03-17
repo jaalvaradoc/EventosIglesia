@@ -1,0 +1,50 @@
+
+<page title="Talleres Inscritos">
+
+  <body: class="celeste"/>
+
+  <content:>
+	<div class="row caja-azul">
+		<div class="span">
+		
+		<h2>Administración de roles</h2>
+
+		</div>
+	</div>
+	<h2>Usuarios</h2><br/>
+	<div>
+	
+	<table class="table table-bordered responsive-utilities table-hover">
+		<tr bgcolor="white">
+			<td>
+				<strong>Evento</strong>
+			</td>
+
+			<td>
+				<strong>Taller</strong>
+			</td>
+			<td>
+			</td>
+		</tr>
+		<%current_user.tallers.each do |taller|%>
+		<% @evento= Evento.find(taller.evento_id)%>
+		<tr>
+			<td>
+				<%=@evento.nombre%>
+			</td>
+			<td>
+				<%=taller.nombre%>
+			</td>
+			<td width="20%"><%= link_to 'Detalles', "/tallers/#{taller.id}", :class =>"btn btn-small btn-primary" %>
+			<%= link_to "Retirarse", users_delete_taller_path(:taller=>taller.id), :class =>"btn btn-small btn-error"%>
+			</td>
+		</tr>
+		<%end%>
+	</table>
+	</div>
+
+    <section class="content-body">
+    </section>
+  </content:>
+
+</page>
