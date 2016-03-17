@@ -1,15 +1,21 @@
-
-<page title="Talleres Inscritos">
+<page title="Administrar Roles" >
 
   <body: class="celeste"/>
 
   <content:>
-	<div class="row caja-azul">
-		<div class="span">
+	<%if !current_user.administrator?%>
+      <div class="caja-azul">
+		
+		<h2>¡Permiso Denegado!</h2>
+
+	</div>
+    <%else%>
+	<div class="caja-azul">
+		
 		
 		<h2>Administración de roles</h2>
 
-		</div>
+		
 	</div>
 	<h2>Usuarios</h2><br/>
 	<div>
@@ -26,26 +32,23 @@
 			<td colspan="2">
 			</td>
 		</tr>
-		<%User.all.each do |usuario|%>
+		<%User.all.where.not(id: current_user.id).where.not(id: 1).each do |usuario|%>
 		<tr>
-			<td>
-				<%=usuario.name%>
+			<td class="no-link-decoration">
+				<%= link_to "#{usuario.name}", "/users/#{usuario.id}"%>
 			</td>
 			<td>
 				<% if usuario.administrator?%>
-				Administrador
+				<strong>Administrador</strong>
 				<%else%>
-				Usuario
+				<strong>Usuario</strong>
 				<%end%>
 			</td>
 			<td width="5%" style="border-right: none;">
-				<%= link_to 'Detalles', "/users/#{usuario.id}", :class =>"btn btn-small btn-primary" %>
-				</td>
-			<td width="5%" style="border-left: none;">
 				<% if !usuario.administrator?%>
-				<%= link_to "Administrador", users_cambiar_rol_path(:user=>usuario.id), :class =>"btn btn-small btn-success"%>
+				<%= link_to "Volver Administrador", users_cambiar_rol_path(:user=>usuario.id), :class =>"btn btn-small btn-success"%>
 				<%else%>
-				<%= link_to "  Asistente  ", users_cambiar_rol_path(:user=>usuario.id), :class =>"btn btn-small btn-primary"%>
+				<%= link_to "Volver Asistente", users_cambiar_rol_path(:user=>usuario.id), :class =>"btn btn-small btn-primary"%>
 				<%end%>
 			</td>
 		</tr>
@@ -55,6 +58,7 @@
 
     <section class="content-body">
     </section>
+    <%end%>
   </content:>
 
 </page>

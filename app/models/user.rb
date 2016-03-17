@@ -62,4 +62,7 @@ class User < ActiveRecord::Base
   def view_permitted?(field)
     true
   end
+
+  
+  
 end

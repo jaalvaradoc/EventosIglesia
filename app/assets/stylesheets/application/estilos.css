@@ -27,14 +27,17 @@
 
 .forgot-password-page, .login-page, .celeste {
 	background-color: #e6f3ff;
-    margin-top:60px;
+    margin-top:80px;
     background-image: url("/imagenes/fondo.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
-
+.no-link-decoration{
+    text-decoration: none;
+    color:black;
+}
 
 .actions {
     background-color: blue;
