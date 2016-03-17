@@ -7,9 +7,11 @@ Eventosiglesia::Application.routes.draw do
   post 'search' => 'front#search', :as => 'site_search_post'
   get 'search' => 'front#search', :as => 'site_search'
   get 'users/lista-talleres' => 'users#lista-talleres'
+  get 'users/roles-usuarios' => 'users#roles-usuarios'
 
   get 'users/add_taller' => 'users#add_taller' 
   get 'users/delete_taller' => 'users#delete_taller'
+  get 'users/cambiar_rol' => 'users#cambiar_rol'
   #Inscribirse en un taller
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

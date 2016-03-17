@@ -10,6 +10,9 @@ you can place common code in this file. -->
     <%if !current_user.guest?&&!current_user.administrator?%>
     <nav-item href="#{base_url}/users/lista-talleres">Talleres del usuario</nav-item>
     <%end%>
+    <%if current_user.administrator?%>
+    <nav-item href="#{base_url}/users/roles-usuarios">Asignar roles</nav-item>
+    <%end%>
   </navigation>
 </def>
 

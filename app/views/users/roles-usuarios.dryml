@@ -17,26 +17,36 @@
 	<table class="table table-bordered responsive-utilities table-hover">
 		<tr bgcolor="white">
 			<td>
-				<strong>Evento</strong>
+				<strong>Usuario</strong>
 			</td>
 
 			<td>
-				<strong>Taller</strong>
+				<strong>Rol</strong>
 			</td>
-			<td>
+			<td colspan="2">
 			</td>
 		</tr>
-		<%current_user.tallers.each do |taller|%>
-		<% @evento= Evento.find(taller.evento_id)%>
+		<%User.all.each do |usuario|%>
 		<tr>
 			<td>
-				<%=@evento.nombre%>
+				<%=usuario.name%>
 			</td>
 			<td>
-				<%=taller.nombre%>
+				<% if usuario.administrator?%>
+				Administrador
+				<%else%>
+				Usuario
+				<%end%>
 			</td>
-			<td width="20%"><%= link_to 'Detalles', "/tallers/#{taller.id}", :class =>"btn btn-small btn-primary" %>
-			<%= link_to "Retirarse", users_delete_taller_path(:taller=>taller.id), :class =>"btn btn-small btn-error"%>
+			<td width="5%" style="border-right: none;">
+				<%= link_to 'Detalles', "/users/#{usuario.id}", :class =>"btn btn-small btn-primary" %>
+				</td>
+			<td width="5%" style="border-left: none;">
+				<% if !usuario.administrator?%>
+				<%= link_to "Administrador", users_cambiar_rol_path(:user=>usuario.id), :class =>"btn btn-small btn-success"%>
+				<%else%>
+				<%= link_to "  Asistente  ", users_cambiar_rol_path(:user=>usuario.id), :class =>"btn btn-small btn-primary"%>
+				<%end%>
 			</td>
 		</tr>
 		<%end%>
