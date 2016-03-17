@@ -7,7 +7,7 @@ class Taller < ActiveRecord::Base
     descripcion :string
     imagen :string
     lugar :string
-    cupo :integer
+    cupo :integer  
     timestamps
   end
 
@@ -18,6 +18,7 @@ class Taller < ActiveRecord::Base
 
   belongs_to :evento, :inverse_of => :tallers, :counter_cache => true
 
+  has_and_belongs_to_many :users
 
   def s3_credentials
     {:bucket => "ciaeventos", :access_key_id => "AKIAJLCMNNSWMSVQ4WSA", :secret_access_key => "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"}

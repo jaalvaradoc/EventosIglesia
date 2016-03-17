@@ -7,6 +7,7 @@ you can place common code in this file. -->
   <navigation class="main-nav" merge-attrs param="default">
     <nav-item href="#{base_url}/">Inicio</nav-item>
     <nav-item with="&Evento"><ht key="evento.nav_item" count="100">Evento</ht></nav-item>
+    <nav-item href="#{base_url}/users/lista-talleres">Talleres del usuario</nav-item>
   </navigation>
 </def>
 
