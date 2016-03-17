@@ -31,7 +31,7 @@
 		</tr>
 	<tr>
 		<td height="250px" valign="top">
-			<%= image_tag(taller.cover.url(:thumb), size: "250x250", alt: "#{taller.nombre}", :class =>"imagenes")%>
+			<%= image_tag(taller.cover.url(:thumb),alt: "#{taller.nombre}", :class => "imagenes-tablas")%>
 		</td>
 		</tr>
 		<tr>

@@ -332,7 +332,7 @@ you can place common code in this file. -->
 
     <content-body: class="caja-azul" param>
     <div class="row">
-      <div class="span3"><%=image_tag(@taller.cover.url(:thumb), :class => "imagenes") %></div>
+      <div class="span3"><%=image_tag(@taller.cover.url(:thumb), :class => "imagenes-tablas") %></div>
       <div class="span"><field-list fields="descripcion, lugar, cupo" param>
       </field-list></div>
       </div>

@@ -22,7 +22,7 @@
     </tr>
   <tr>
     <td height="250px" valign="top">
-	<%= image_tag(evento.cover.url(:thumb), size: "250x250", alt: "#{evento.nombre}")%>
+	<%= image_tag(evento.cover.url(:thumb), alt: "#{evento.nombre}",:class => "imagenes-tablas")%>
   </td>
   </tr>
   </table>
