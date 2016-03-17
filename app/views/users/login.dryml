@@ -51,9 +51,7 @@
 		<a href='/forgot_password'>¿Has olvidado tu contraseña?</a>
 	</div>
 	
-	<div> También puedes iniciar sesión con Google
-		<br/>
-		<a href="/auth/google_oauth2" class="g-signin" data-toggle="tooltip" title="También puedes iniciar sesión con tu cuenta de Google" > <%=image_tag("/imagenes/google.png", size: "175x100")%> </a>
+	<div> <%=link_to 'Registrate', signup_users_path%>
 	</div>
 	</center>
 
