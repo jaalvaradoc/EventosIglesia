@@ -3,8 +3,8 @@ class Evento < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
-    nombre :string
-    descripcion :text
+    nombre :string, :required
+    descripcion :text, :required
     imagen :string
     tallers_count :integer, :default => 0, :null => false
     timestamps

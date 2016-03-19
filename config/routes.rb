@@ -12,6 +12,7 @@ Eventosiglesia::Application.routes.draw do
   get 'users/add_taller' => 'users#add_taller' 
   get 'users/delete_taller' => 'users#delete_taller'
   get 'users/cambiar_rol' => 'users#cambiar_rol'
+  post 'horarios/crear_horario' => 'horarios#crear_horario'
   #Inscribirse en un taller
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

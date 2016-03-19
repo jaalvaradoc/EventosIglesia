@@ -11,6 +11,7 @@ you can place common code in this file. -->
     <nav-item href="#{base_url}/users/lista-talleres">Talleres del usuario</nav-item>
     <%end%>
     <%if current_user.administrator?%>
+    <nav-item with="&Horario"><ht key="horario.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
     <nav-item href="#{base_url}/users/roles-usuarios">Asignar roles</nav-item>
     <%end%>
   </navigation>
@@ -401,6 +402,107 @@ you can place common code in this file. -->
       <submit label="#{ht 'taller.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
+</def>
+
+<!--====================Horarios====================-->
+
+<def tag="form" for="Horario">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="hora_inicio" param/>
+    <div param="actions">
+      <submit label="#{ht 'horario.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+<!--<def tag="new-page" for="Horario">
+  <page merge title="#{ht 'horario.new.title', :default=>[' New Horario'] }">
+    <body: class="new-page horario" param/>
+
+    <content-header: class="caja-azul" param>
+      <h2 param="heading">
+        Nuevo Horario
+
+      </h2>
+    </content-header:>
+
+    <content-body:  param>
+      <br/><br/>
+      <form param>
+        <submit: class="caja-azul" label="#{ht 'horario.actions.create', :default=>['Create Horario']}"/>
+        
+      </form>
+      
+    </content-body:>
+  </page>
+</def>-->
+
+<def tag="index-page" for="Horario">
+  <page merge title="#{ht 'horario.index.title', :default=>[model.model_name.human(:count=>100)] }" >
+    <body: class="celeste" param/>
+
+    <content-header: class="caja-azul" param>
+      <h2>
+        Horarios
+      </h2>
+
+
+    </content-header:>
+
+    <content-body: param>
+      <form action="horarios/crear_horario" method="post">
+      <div class="caja-azul">
+        
+        <h4>
+        Nuevo horario: <%=time_select("horario","hora_inicio",{include_seconds: false,ampm: true}) %>
+
+        <button type="submit" class="btn btn-xs btn-success">Crear Horario</button>
+
+      </h4>
+      </div>
+      </form>
+      <br/>
+        <div>
+          <%if Horario.all.blank?%>
+          <strong>No hay horarios registrados.</strong>
+          <%else%>
+          <table class="table table-bordered responsive-utilities table-hover">
+            <tr bgcolor="white">
+              <td>
+                <strong>Hora de Inicio</strong>
+              </td>
+
+              <td>
+              </td>
+            </tr>
+            <%Horario.all.each do |horario|%>
+            <tr>
+              <td class="no-link-decoration">
+                <%=horario.hora_inicio.to_time.strftime("%I:%M %p")%>
+              </td>
+              <td width="5%" style="border-right: none;">
+                <a data-confirm="¿Está seguro que desea eliminar el horario?" data-method="delete" href="/horarios/#{horario.id}"  class="btn btn-danger btn-xs" >Eliminar</a>
+              </td>
+            </tr>
+            <%end%>
+          </table>
+          <%end%>
+        </div><!--<a action="new" to="&model" param="new-link">
+        <ht key="horario.actions.new">New Horario</ht>
+      </a>
+
+      <page-nav param="top-page-nav"/>
+
+      <collection param/>
+
+      <page-nav param="bottom-page-nav"/>-->
+      
+    
+
+    </content-body:>
+  </page>
 </def>
 
 

@@ -4,13 +4,19 @@ class User < ActiveRecord::Base
 
   fields do
     name          :string, :required, :unique
-    email_address :email_address, :login => true
+    gender        :string, :required
+    birth_date    :date, :required
+    email_address :email_address, :required, :login => true
+    phone         :string, :required
     administrator :boolean, :default => false
+    status        :boolean, :default =>true
     timestamps
   end
-  attr_accessible :name, :email_address, :password, :password_confirmation, :current_password
+  attr_accessible :name, :gender, :birth_date, :email_address,:phone, :password, :password_confirmation, :current_password
 
-  has_and_belongs_to_many :tallers
+  has_many :inscripcions, :dependent => :destroy, :inverse_of =>:user
+  has_many :tallers, :through =>:inscripcions
+  has_many :horarios, :through =>:inscripcions
   # This gives admin rights and an :active state to the first sign-up.
   # Just remove it if you don't want that
   before_create do |user|

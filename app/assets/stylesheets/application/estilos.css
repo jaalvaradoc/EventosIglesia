@@ -13,6 +13,7 @@
     position:relative;
     z-index: 1;
     word-wrap: break-word;
+    margin:auto;
 }
 
 .padre-login{
@@ -25,7 +26,7 @@
     text-align: left;      
 }
 
-.forgot-password-page, .login-page, .celeste {
+.forgot-password-page, .login-page, .user-account-page, .new-page, .celeste {
 	background-color: #e6f3ff;
     margin-top:80px;
     background-image: url("/imagenes/fondo.png");
@@ -43,6 +44,11 @@
     background-color: blue;
     width: 250px;
 }
+
+.form-actions, .form-horizontal .actions{
+    background-color: blue;
+}
+
 
 .navbar{
     position: fixed;

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316221733) do
+ActiveRecord::Schema.define(version: 20160318165832) do
 
   create_table "eventos", force: true do |t|
     t.string   "nombre"
@@ -25,6 +25,24 @@ ActiveRecord::Schema.define(version: 20160316221733) do
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
   end
+
+  create_table "horarios", force: true do |t|
+    t.time     "hora_inicio"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "inscripcions", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "taller_id"
+    t.integer  "horario_id"
+  end
+
+  add_index "inscripcions", ["horario_id"], name: "index_inscripcions_on_horario_id"
+  add_index "inscripcions", ["taller_id"], name: "index_inscripcions_on_taller_id"
+  add_index "inscripcions", ["user_id"], name: "index_inscripcions_on_user_id"
 
   create_table "tallers", force: true do |t|
     t.string   "nombre"
@@ -43,11 +61,6 @@ ActiveRecord::Schema.define(version: 20160316221733) do
 
   add_index "tallers", ["evento_id"], name: "index_tallers_on_evento_id"
 
-  create_table "tallers_users", id: false, force: true do |t|
-    t.integer "taller_id"
-    t.integer "user_id"
-  end
-
   create_table "users", force: true do |t|
     t.string   "crypted_password",          limit: 40
     t.string   "salt",                      limit: 40
@@ -60,6 +73,10 @@ ActiveRecord::Schema.define(version: 20160316221733) do
     t.datetime "updated_at"
     t.string   "state",                                default: "active"
     t.datetime "key_timestamp"
+    t.string   "gender"
+    t.date     "birth_date"
+    t.string   "phone"
+    t.boolean  "status",                               default: true
   end
 
   add_index "users", ["state"], name: "index_users_on_state"

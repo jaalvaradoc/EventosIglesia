@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   def delete_taller
     if !params[:taller].blank?
       @taller=Taller.find(params[:taller])
-      if ActiveRecord::Base.connection.execute("delete from tallers_users where user_id=#{current_user.id} and taller_id=#{params[:taller]}")
+      if ActiveRecord::Base.connection.execute("delete from inscripcions where user_id=#{current_user.id} and taller_id=#{params[:taller]}")
         flash[:success]="Se ha retirado satisfactoriamente del taller #{@taller.nombre}"
       else
         flash[:error]="Ha ocurrido un error al intentar retirarse del taller #{@taller.nombre}"

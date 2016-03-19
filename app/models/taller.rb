@@ -3,11 +3,11 @@ class Taller < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
-    nombre :string
-    descripcion :string
+    nombre :string, :required
+    descripcion :string, :required
     imagen :string
-    lugar :string
-    cupo :integer  
+    lugar :string, :required
+    cupo :integer  , :required
     timestamps
   end
 
@@ -18,7 +18,9 @@ class Taller < ActiveRecord::Base
 
   belongs_to :evento, :inverse_of => :tallers, :counter_cache => true
 
-  has_and_belongs_to_many :users
+  has_many :inscripcions, :dependent => :destroy, :inverse_of =>:taller
+  has_many :users, :through =>:inscripcions
+  has_many :horarios, :through =>:inscripcions
 
   def s3_credentials
     {:bucket => "ciaeventos", :access_key_id => "AKIAJLCMNNSWMSVQ4WSA", :secret_access_key => "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"}

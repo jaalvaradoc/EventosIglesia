@@ -29,3 +29,17 @@ es:
 #    attribute_help:
 #      user:
 #        email_address:
+es:
+  date:
+    formats:
+      default: "%d/%m/%Y"
+  time:
+    formats:
+      default: "%I:%M %p"
+en:
+  date:
+    formats:
+      default: "%d/%m/%Y"
+  time:
+    formats:
+      default: "%d/%m/%Y %I:%M %p"
