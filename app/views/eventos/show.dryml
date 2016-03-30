@@ -44,6 +44,7 @@
 	<%if !current_user.administrator?&&!current_user.guest?&&(current_user.tallers.where("tallers.id = ? ", taller.id)).blank?%>
 
 	<%= link_to "Inscribirse", users_add_taller_path(:taller=>taller.id, :evento =>@evento.id), :class =>"btn btn-small btn-success"%>
+	<%= link_to "Inscribirse", "/inscripcions/new", :class =>"btn btn-small btn-success"%>
 
 	<%end%>
 	<%if current_user.guest?%>

@@ -5,7 +5,6 @@ class Inscripcion < ActiveRecord::Base
   fields do
     timestamps
   end
-  attr_accessible
   attr_accessible :user, :user_id, :taller, :taller_id, :horario, :horario_id 
 
   belongs_to :user, :inverse_of => :inscripcions
@@ -15,15 +14,15 @@ class Inscripcion < ActiveRecord::Base
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.administrator?
+    true
   end
 
   def update_permitted?
-    acting_user.administrator?
+    acting_user.administrator? || acting_user.id==self.user_id
   end
 
   def destroy_permitted?
-    acting_user.administrator?
+    acting_user.administrator? || acting_user.id==self.user_id
   end
 
   def view_permitted?(field)

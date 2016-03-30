@@ -11,7 +11,7 @@ you can place common code in this file. -->
     <nav-item href="#{base_url}/users/lista-talleres">Talleres del usuario</nav-item>
     <%end%>
     <%if current_user.administrator?%>
-    <nav-item with="&Horario"><ht key="horario.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
+    <nav-item with="&Horario"><ht key="horario.nav_item" count="100">Horario</ht></nav-item>
     <nav-item href="#{base_url}/users/roles-usuarios">Asignar roles</nav-item>
     <%end%>
   </navigation>
@@ -199,7 +199,7 @@ you can place common code in this file. -->
 <def tag="signup-form" for="User">
   <form lifecycle="signup" merge param="default">
     <error-messages param/>
-    <field-list fields="name, email_address, password, password_confirmation" param/>
+    <field-list fields="name, gender, birth_date, phone, email_address, password, password_confirmation" param/>
     <div param="actions">
       <submit label="#{ht 'user.actions.signup', :default=>['Signup']}" param/><or-cancel param="cancel"/>
     </div>
@@ -441,6 +441,7 @@ you can place common code in this file. -->
 
 <def tag="index-page" for="Horario">
   <page merge title="#{ht 'horario.index.title', :default=>[model.model_name.human(:count=>100)] }" >
+  <sub-nav: current="Horarios"/>
     <body: class="celeste" param/>
 
     <content-header: class="caja-azul" param>
@@ -501,6 +502,39 @@ you can place common code in this file. -->
       
     
 
+    </content-body:>
+  </page>
+</def>
+
+
+<!--=============================Inscripciones====================-->
+
+<def tag="form" for="Inscripcion">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="horario, taller, user" param/>
+    <div param="actions">
+      <submit label="#{ht 'inscripcion.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+<def tag="new-page" for="Inscripcion">
+  <page merge title="#{ht 'inscripcion.new.title', :default=>[' New Inscripcion'] }">
+    <body: class="new-page inscripcion" param/>
+
+    <content-header: param>
+      <h2 param="heading">
+        <ht key="inscripcion.new.heading">
+          New Inscripcion
+        </ht>
+      </h2>
+    </content-header:>
+
+    <content-body: param>
+      <form param>
+        <submit: label="#{ht 'inscripcion.actions.create', :default=>['Create Inscripcion']}"/>
+      </form>
     </content-body:>
   </page>
 </def>

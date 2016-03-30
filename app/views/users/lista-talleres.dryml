@@ -24,16 +24,24 @@
 				<strong>Taller</strong>
 			</td>
 			<td>
+				<strong>Horario</strong>
+			</td>
+			<td>
 			</td>
 		</tr>
 		<%current_user.tallers.each do |taller|%>
 		<% @evento= Evento.find(taller.evento_id)%>
+		<% @inscripcion=Inscripcion.where(:user_id=>current_user.id,:taller_id => taller.id).first%>
+		<% @horario=Horario.find(@inscripcion.horario_id)%>
 		<tr>
 			<td>
 				<%=@evento.nombre%>
 			</td>
 			<td>
 				<%=taller.nombre%>
+			</td>
+			<td>
+				<%=@horario.hora_inicio.to_time.strftime("%I:%M %p")%>
 			</td>
 			<td width="20%"><%= link_to 'Detalles', "/tallers/#{taller.id}", :class =>"btn btn-small btn-primary" %>
 			<%= link_to "Retirarse", users_delete_taller_path(:taller=>taller.id), :class =>"btn btn-small btn-error"%>

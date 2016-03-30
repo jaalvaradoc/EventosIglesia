@@ -203,4 +203,4 @@ es:
       click_to_edit: "(haga clic para editar)"
 
     select_one_editor:
-      blank_message: *no_model
+      blank_message: *no_model  

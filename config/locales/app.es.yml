@@ -23,9 +23,29 @@ es:
       user:
         name: Nombre
         password: Contraseña
+        gender: Género
+        phone: Teléfono
+        birth_date: Fecha de Nacimiento
         current_password: Contraseña Actual
         password_confirmation: Confirmación Contraseña
         email_address: Correo Electrónico
+
+
+es:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            gender:
+              blank: "Favor, digite su genero"
+            phone:
+              blank: "Favor, digite su número de teléfono"  
+            birth_date: 
+              blank: "Favor, digite su fecha de nacimiento"
+
+              
+    
 #    attribute_help:
 #      user:
 #        email_address:

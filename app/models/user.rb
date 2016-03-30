@@ -4,10 +4,10 @@ class User < ActiveRecord::Base
 
   fields do
     name          :string, :required, :unique
-    gender        :string, :required
-    birth_date    :date, :required
+    gender        :string
+    birth_date    :date
     email_address :email_address, :required, :login => true
-    phone         :string, :required
+    phone         :string
     administrator :boolean, :default => false
     status        :boolean, :default =>true
     timestamps
@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
   end
 
   def update_permitted?
-    acting_user.administrator? ||
+    acting_user.administrator? || acting_user==self ||
       (acting_user == self && only_changed?(:email_address, :crypted_password,
                                             :current_password, :password, :password_confirmation))
     # Note: crypted_password has attr_protected so although it is permitted to change, it cannot be changed
