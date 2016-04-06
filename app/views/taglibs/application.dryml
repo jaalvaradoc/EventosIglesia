@@ -21,8 +21,9 @@ you can place common code in this file. -->
 
 <def tag="input" for="Paperclip::Attachment">
    <%= file_field_tag :cover, class: 'btn btn-success', accept:'image/jpeg,image/png,image/jpg' %>
- </def>
- <extend tag="form" for="Evento">
+</def>
+
+<extend tag="form" for="Evento">
   <old-form merge multipart>
     <field-list: fields="nombre, descripcion, cover"/>
   </old-form>
@@ -525,16 +526,55 @@ you can place common code in this file. -->
 
     <content-header: param>
       <h2 param="heading">
-        <ht key="inscripcion.new.heading">
-          New Inscripcion
-        </ht>
+        Inscripción
       </h2>
     </content-header:>
 
-    <content-body: param>
+    <content-body: class="caja-azul" param>
+      <%if Inscripcion.where(:user_id=>current_user.id).count>0&& !current_user.administrator?%>
+      <h2 param="heading">
+        Ya está inscrito en este taller
+      </h2>
+      <%else%>
       <form param>
+        <field-list: fields="user, taller, horario" param>
+        <user-view:>
+          <%if !current_user.administrator?%>
+          <%=current_user%>
+          <%=hidden_field_tag "inscripcion[user_id]",current_user.id%>
+          <%else%>
+          <%= select_tag "inscripcion[user_id]",options_for_select(User.all.collect{ |u| [u.name,u.id]}) %>
+          <%end%>
+        </user-view:>
+        <taller-view:>
+          <%= @taller.nombre %>
+          <%=hidden_field_tag "inscripcion[taller_id]",@taller.id%>
+        </taller-view:>
+        <horario-view:>
+
+        <%@horarios_inscritos=Horario.joins(:inscripcions).joins(:tallers)%>
+        
+        <!-- USAR UN EACH y verificar las condiciones - mazajose@gmail.com==========================-->
+        <%Horario.all.each do |h|%>
+          <%if Horario.joins(:inscripcions).joins(:tallers).count(:all)>0%>
+            <%@horarios_inscritos=Inscripcion.where(:horario_id=>h.id, :taller_id=>@taller.id)%>
+
+          <%if (Taller.joins(:inscripcions).where("horario_id=?",h.id).first).cupo > @horarios_inscritos.count(:all)%>
+            <%@horarios_disponibles << h%>
+          <%end%>
+          <%else%>
+          <%end%>
+        <%end%>
+
+          <%= select_tag "inscripcion[horario_id]",options_for_select(@horarios_disponibles.collect{ |h| [h.hora_inicio.to_time.strftime("%I:%M %p"),h.id]}) %>
+
+        </horario-view:>
+        </field-list:>
+
         <submit: label="#{ht 'inscripcion.actions.create', :default=>['Create Inscripcion']}"/>
       </form>
+      
+      <%end%>
     </content-body:>
   </page>
 </def>

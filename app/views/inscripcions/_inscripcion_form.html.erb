@@ -1,0 +1,6 @@
+<div>
+	Cupos Disponibles: <%=(Taller.find(taller).cupo - Inscripcion.where(:taller_id=>taller, :horario_id=>1).count).to_s%><br/>
+
+	<%=taller.to_s%>
+
+</div>
