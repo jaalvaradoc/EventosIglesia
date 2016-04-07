@@ -546,6 +546,9 @@ you can place common code in this file. -->
           <%=current_user%>
           <%=hidden_field_tag "inscripcion[user_id]",current_user.id%>
           <%else%>
+
+          <%if Inscripcion.where(:taller_id=>@taller.id).count != 0 %>
+
           <%@disponibles = []%>
           <%User.all.each do |u|%>
 
@@ -554,6 +557,9 @@ you can place common code in this file. -->
           <%end%>
           <%end%>
 
+          <%else%>
+          <%@disponibles=User.all%>
+          <%end%>
 
           <%= select_tag "inscripcion[user_id]",options_for_select(User.where("id not in (?)",@disponibles).collect{ |u| [u.name,u.id]}) %>
           <%end%></h3>
