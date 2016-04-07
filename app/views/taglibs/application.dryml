@@ -7,7 +7,7 @@ you can place common code in this file. -->
   <navigation class="main-nav" merge-attrs param="default">
     <nav-item href="#{base_url}/">Inicio</nav-item>
     <nav-item with="&Evento"><ht key="evento.nav_item" count="100">Evento</ht></nav-item>
-    <%if !current_user.guest?&&!current_user.administrator?%>
+    <%if !current_user.guest?#&&!current_user.administrator?%>
     <nav-item href="#{base_url}/users/lista-talleres">Talleres del usuario</nav-item>
     <%end%>
     <%if current_user.administrator?%>
@@ -514,9 +514,9 @@ you can place common code in this file. -->
   <form merge param="default">
     <error-messages param/>
     <field-list fields="horario, taller, user" param/>
-    <div param="actions">
+    <!--<div param="actions">
       <submit label="#{ht 'inscripcion.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
-    </div>
+    </div>-->
   </form>
 </def>
 
@@ -530,50 +530,66 @@ you can place common code in this file. -->
       </h2>
     </content-header:>
 
-    <content-body: class="caja-azul" param>
+    <content-body: class="caja-azul container" param>
       <%if Inscripcion.where(:user_id=>current_user.id).count>0&& !current_user.administrator?%>
       <h2 param="heading">
         Ya está inscrito en este taller
       </h2>
       <%else%>
-      <form param>
-        <field-list: fields="user, taller, horario" param>
-        <user-view:>
-          <%if !current_user.administrator?%>
+
+
+      <!--==================###########################################==========================================-->
+      <form param action="inscribir" method="get" for="Inscripcion">
+      <div class="row">
+      <div class="span6">
+      <h3><strong>Usuario:</strong> <%if !current_user.administrator?%>
           <%=current_user%>
           <%=hidden_field_tag "inscripcion[user_id]",current_user.id%>
           <%else%>
           <%= select_tag "inscripcion[user_id]",options_for_select(User.all.collect{ |u| [u.name,u.id]}) %>
-          <%end%>
-        </user-view:>
-        <taller-view:>
-          <%= @taller.nombre %>
-          <%=hidden_field_tag "inscripcion[taller_id]",@taller.id%>
-        </taller-view:>
-        <horario-view:>
+          <%end%></h3>
+      </div>
+      <div class="span6">
+          <h3><strong>Taller:</strong> <%= @taller.nombre %>
+          <%=hidden_field_tag "inscripcion[taller_id]",@taller.id%></h3>
+          </div>
+      </div>
+          <table class="table table-bordered responsive-utilities table-hover">
+    <tr bgcolor="black">
+      <td>
+        <strong>Horario</strong>
+      </td>
 
-        <%@horarios_inscritos=Horario.joins(:inscripcions).joins(:tallers)%>
-        
-        <!-- USAR UN EACH y verificar las condiciones - mazajose@gmail.com==========================-->
-        <%Horario.all.each do |h|%>
-          <%if Horario.joins(:inscripcions).joins(:tallers).count(:all)>0%>
-            <%@horarios_inscritos=Inscripcion.where(:horario_id=>h.id, :taller_id=>@taller.id)%>
-
-          <%if (Taller.joins(:inscripcions).where("horario_id=?",h.id).first).cupo > @horarios_inscritos.count(:all)%>
-            <%@horarios_disponibles << h%>
-          <%end%>
-          <%else%>
-          <%end%>
+      <td>
+        <strong>Cupos Disponibles</strong>
+      </td>
+      <td>
+      </td>
+    </tr>
+    <%=hidden_field_tag "t",@taller.id%>
+    <%Horario.all.each do |h|%>
+    <tr>
+      <td>
+        <%=h.hora_inicio.to_time.strftime("%I:%M %p")%>
+      </td>
+      <td>
+        <%if Inscripcion.where(:taller_id=>@taller.id,:horario_id=>h.id).count>0%>
+        <%=(@taller.cupo-Inscripcion.where(:taller_id=>@taller.id,:horario_id=>h.id).count).to_s%>
+        <%else%>
+        <%=@taller.cupo.to_s%>
         <%end%>
+      </td>
+      <td width="20%"> <button type="submit" value="#{h.id}" name="ho" class="btn btn-xs btn-success">Inscribir</button>
+      </td>
+    </tr>
+    <%end%>
+  </table>
+  
 
-          <%= select_tag "inscripcion[horario_id]",options_for_select(@horarios_disponibles.collect{ |h| [h.hora_inicio.to_time.strftime("%I:%M %p"),h.id]}) %>
-
-        </horario-view:>
-        </field-list:>
-
-        <submit: label="#{ht 'inscripcion.actions.create', :default=>['Create Inscripcion']}"/>
       </form>
-      
+
+
+
       <%end%>
     </content-body:>
   </page>

@@ -3,4 +3,6 @@
 
 	<%=taller.to_s%>
 
+	<%= select_tag "inscripcion[horario_id]",options_for_select(Horario.all.collect{ |h| [h.hora_inicio.to_time.strftime("%I:%M %p"),h.id]}) %>
+
 </div>
