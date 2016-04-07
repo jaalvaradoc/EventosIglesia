@@ -531,10 +531,21 @@ you can place common code in this file. -->
     </content-header:>
 
     <content-body: class="caja-azul container" param>
+
+    <%@disponibles1 = []%>       
+    <%User.all.each do |u|%>
+      <%if Inscripcion.where(:taller_id=>@taller.id,:user_id=>u.id).count.to_i==0%>
+        <%@disponibles1 << u.id%>
+      <%end%>
+    <%end%>
       <%if Inscripcion.where(:user_id=>current_user.id).count>0&& !current_user.administrator?%>
-      <h2 param="heading">
+      <h3 param="heading">
         Ya está inscrito en este taller
-      </h2>
+      </h3>
+      <%elsif @disponibles1.count==0%>
+      <h3 param="heading">
+        No hay usuarios disponibles para inscribir en el taller.
+        </h3>
       <%else%>
 
 
@@ -546,22 +557,15 @@ you can place common code in this file. -->
           <%=current_user%>
           <%=hidden_field_tag "inscripcion[user_id]",current_user.id%>
           <%else%>
-
-          <%if Inscripcion.where(:taller_id=>@taller.id).count != 0 %>
-
-          <%@disponibles = []%>
+          <%@disponibles = []%>       
           <%User.all.each do |u|%>
-
-          <%if Inscripcion.where(:taller_id=>@taller.id,:user_id=>u.id).count>0%>
-          <%@disponibles << u.id%>
+            <%if Inscripcion.where(:taller_id=>@taller.id,:user_id=>u.id).count.to_i==0%>
+              <%@disponibles << u.id%>
+            <%end%>
           <%end%>
-          <%end%>
+          
 
-          <%else%>
-          <%@disponibles=User.all%>
-          <%end%>
-
-          <%= select_tag "inscripcion[user_id]",options_for_select(User.where("id not in (?)",@disponibles).collect{ |u| [u.name,u.id]}) %>
+          <%= select_tag "inscripcion[user_id]",options_for_select(User.where("id in (?)",@disponibles).collect{ |u| [u.name,u.id]}) %>
           <%end%></h3>
       </div>
       <div class="span6">

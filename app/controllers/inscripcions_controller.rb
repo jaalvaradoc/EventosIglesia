@@ -47,10 +47,11 @@ class InscripcionsController < ApplicationController
  	if @cupos>@inscritos
 		if @inscripcion.save
 	    	flash[:success]="Se ha inscrito satisfactoriamente en el taller #{@taller.nombre} con el horario #{@horario.hora_inicio.to_time.strftime("%I:%M %p")}."
+	    	redirect_to "/tallers/#{@taller.id}"
 		else
 	    	flash[:error]="Ha ocurrido un error al intentar inscribirse."
+	    	redirect_to "/inscripcions/new?taller=#{@taller.id}"
 	  	end
-	  	redirect_to "/"
   	else
   		flash[:error]="No hay cupos disponibles para el taller #{@taller.nombre} en el horario #{@horario.hora_inicio.to_time.strftime("%I:%M %p")}."	
   		redirect_to "/inscripcions/new?taller=#{@taller.id}"
