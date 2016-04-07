@@ -538,7 +538,7 @@ you can place common code in this file. -->
         <%@disponibles1 << u.id%>
       <%end%>
     <%end%>
-      <%if Inscripcion.where(:user_id=>current_user.id).count>0&& !current_user.administrator?%>
+      <%if Inscripcion.where(:user_id=>current_user.id,:taller_id=>@taller.id).count>0&& !current_user.administrator?%>
       <h3 param="heading">
         Ya está inscrito en este taller
       </h3>
