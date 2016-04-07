@@ -36,10 +36,16 @@
 		</tr>
 		<tr>
 		<td>
-			Cupos Disponibles: <%=(taller.cupo.to_i - taller.users.where("taller_id=?",taller.id).count.to_i).to_s%>
-			<%if taller.users.where("taller_id=?",taller.id).count.to_i >0 %>
-			Inscrito
+			<%if !current_user.guest?%>
+				<%if taller.users.where("taller_id=? and user_id=?",taller.id,current_user.id).count.to_i >0  %>
+				Inscrito
+				<%else%>
+				No Inscrito
+				<%end%>
+			<%else%>
+				No Inscrito
 			<%end%>
+
 		</td>
 	</tr>
 	</table><center>
@@ -48,7 +54,8 @@
 
 	
 	<%= link_to "Inscribirse", "/inscripcions/new?taller=#{taller.id}", :class =>"btn btn-small btn-success"%>
-
+	<%elsif current_user.administrator?%>
+	<%= link_to "Inscribir", "/inscripcions/new?taller=#{taller.id}", :class =>"btn btn-small btn-success"%>
 	<%end%>
 	<%if current_user.guest?%>
 	<%= link_to 'Inscribirse', user_login_path , :class =>"btn btn-small btn-success"%>
