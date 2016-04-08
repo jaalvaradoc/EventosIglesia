@@ -4,12 +4,16 @@
   <body: class="celeste"/>
 
   <content:>
-	<div class="row caja-azul">
-		<div class="span">
-		<%= image_tag(@evento.cover.url(:thumb),size: "250x250", alt: "#{@evento.nombre}")%><br/></div><div class="span">
+	<div class="row caja-azul container">
+		<div class="span4">
+		<%= image_tag(@evento.cover.url(:thumb),size: "250x250", alt: "#{@evento.nombre}")%><br/>
+		</div>
+		<div class="span7">
 		<h2><%=@evento.nombre%></h2><br/>
-		Descripci&oacute;n:<br/> <%=@evento.descripcion%><br/>
+		<strong>Descripci&oacute;n:</strong> <%=@evento.descripcion%><br/>
 		
+		<strong>Fecha de Inicio:</strong> <%=@evento.fecha_inicio%><br/><br/>
+
 		<%= link_to 'Ver todos los eventos', "/eventos" , :class =>"btn btn-small btn-primary"%>&nbsp;&nbsp;
 
 		<%if current_user.administrator?%>

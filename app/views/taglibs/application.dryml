@@ -25,7 +25,7 @@ you can place common code in this file. -->
 
 <extend tag="form" for="Evento">
   <old-form merge multipart>
-    <field-list: fields="nombre, descripcion, cover"/>
+    <field-list: fields="nombre, descripcion,fecha_inicio, cover"/>
   </old-form>
 </extend>
 
@@ -53,7 +53,7 @@ you can place common code in this file. -->
 <def tag="form" for="Evento">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="nombre, descripcion, cover" param/>
+    <field-list fields="nombre, descripcion,fecha_inicio, cover" param/>
     
     <div param="actions">
       <submit label="#{ht 'evento.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>

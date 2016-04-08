@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318165832) do
+ActiveRecord::Schema.define(version: 20160407205315) do
 
   create_table "eventos", force: true do |t|
     t.string   "nombre"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160318165832) do
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
+    t.date     "fecha_inicio"
   end
 
   create_table "horarios", force: true do |t|

@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
     state :active, :default => true
 
     create :signup, :available_to => "Guest",
-           :params => [:name, :email_address, :password, :password_confirmation],
+           :params => [:name, :gender, :birth_date,:email_address, :phone,:password, :password_confirmation],
            :become => :active
 
     transition :request_password_reset, { :active => :active }, :new_key => true do
@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
 
   def update_permitted?
     acting_user.administrator? || acting_user==self ||
-      (acting_user == self && only_changed?(:email_address, :crypted_password,
+      (acting_user == self && only_changed?(:name, :gender, :birth_date, :email_address, :phone, :crypted_password,
                                             :current_password, :password, :password_confirmation))
     # Note: crypted_password has attr_protected so although it is permitted to change, it cannot be changed
     # directly from a form submission.

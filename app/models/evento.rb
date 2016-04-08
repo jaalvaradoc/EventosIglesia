@@ -5,12 +5,13 @@ class Evento < ActiveRecord::Base
   fields do
     nombre :string, :required
     descripcion :text, :required
+    fecha_inicio :date
     imagen :string
     tallers_count :integer, :default => 0, :null => false
     timestamps
   end
 
-  attr_accessible :nombre, :descripcion, :imagen, :tallers, :cover
+  attr_accessible :nombre, :descripcion, :fecha_inicio, :imagen, :tallers, :cover
 
   has_attached_file :cover, styles: {medium: "1280x720", thumb:"250x250"}, :storage => :s3,:s3_region => 'us-east-1', :s3_credentials => Proc.new{|a| a.instance.s3_credentials}
 
