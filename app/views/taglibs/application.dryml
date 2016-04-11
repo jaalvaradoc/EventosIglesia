@@ -3,7 +3,7 @@ you can place common code in this file. -->
 
 <!-- ====== Main Navigation ====== -->
 
-<def tag="main-nav">
+<!--<def tag="main-nav">
   <navigation class="main-nav" merge-attrs param="default">
     <nav-item href="#{base_url}/">Inicio</nav-item>
     <nav-item with="&Evento"><ht key="evento.nav_item" count="100">Evento</ht></nav-item>
@@ -15,6 +15,24 @@ you can place common code in this file. -->
     <nav-item href="#{base_url}/users/roles-usuarios">Asignar roles</nav-item>
     <%end%>
   </navigation>
+</def>-->
+
+<def tag='main-nav'>
+  <div class='nav-collapse collapse'>
+  <do with='&current_user'>
+    <ul class='navigation account-nav nav pull-left' param>
+    <nav-item href="#{base_url}/">Inicio</nav-item>
+    <nav-item with="&Evento"><ht key="evento.nav_item" count="100">Evento</ht></nav-item>
+    <%if !current_user.guest?#&&!current_user.administrator?%>
+    <nav-item href="#{base_url}/users/lista-talleres">Talleres del usuario</nav-item>
+    <%end%>
+    <%if current_user.administrator?%>
+    <nav-item with="&Horario"><ht key="horario.nav_item" count="100">Horario</ht></nav-item>
+    <nav-item href="#{base_url}/users/roles-usuarios">Asignar roles</nav-item>
+    <%end%>
+    </ul>
+  </do>
+  </div>
 </def>
 
 <!-- ===========Evento=Editar============== -->
