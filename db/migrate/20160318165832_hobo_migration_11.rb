@@ -4,8 +4,8 @@ class HoboMigration11 < ActiveRecord::Migration
     add_column :users, :birth_date, :date
     add_column :users, :phone, :string
     add_column :users, :status, :boolean, :default => true
-
-    change_column :horarios, :hora_inicio, :time, :limit => nil
+    remove_column :horarios, :hora_inicio
+    add_column :horarios, :hora_inicio, :time, :limit => nil
   end
 
   def self.down

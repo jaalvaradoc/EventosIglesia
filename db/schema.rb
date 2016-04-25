@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160407205315) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "eventos", force: true do |t|
     t.string   "nombre"
     t.text     "descripcion"
@@ -28,9 +31,9 @@ ActiveRecord::Schema.define(version: 20160407205315) do
   end
 
   create_table "horarios", force: true do |t|
-    t.time     "hora_inicio"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.time     "hora_inicio"
   end
 
   create_table "inscripcions", force: true do |t|
@@ -41,9 +44,9 @@ ActiveRecord::Schema.define(version: 20160407205315) do
     t.integer  "horario_id"
   end
 
-  add_index "inscripcions", ["horario_id"], name: "index_inscripcions_on_horario_id"
-  add_index "inscripcions", ["taller_id"], name: "index_inscripcions_on_taller_id"
-  add_index "inscripcions", ["user_id"], name: "index_inscripcions_on_user_id"
+  add_index "inscripcions", ["horario_id"], name: "index_inscripcions_on_horario_id", using: :btree
+  add_index "inscripcions", ["taller_id"], name: "index_inscripcions_on_taller_id", using: :btree
+  add_index "inscripcions", ["user_id"], name: "index_inscripcions_on_user_id", using: :btree
 
   create_table "tallers", force: true do |t|
     t.string   "nombre"
@@ -60,7 +63,7 @@ ActiveRecord::Schema.define(version: 20160407205315) do
     t.datetime "cover_updated_at"
   end
 
-  add_index "tallers", ["evento_id"], name: "index_tallers_on_evento_id"
+  add_index "tallers", ["evento_id"], name: "index_tallers_on_evento_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "crypted_password",          limit: 40
@@ -80,6 +83,6 @@ ActiveRecord::Schema.define(version: 20160407205315) do
     t.boolean  "status",                               default: true
   end
 
-  add_index "users", ["state"], name: "index_users_on_state"
+  add_index "users", ["state"], name: "index_users_on_state", using: :btree
 
 end
