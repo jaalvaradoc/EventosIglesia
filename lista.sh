@@ -694,27 +694,3 @@ xz-utils\
 zerofree\
 zlib1g:amd64\
 zlib1g-dev:amd64\
-#!/bin/bash
-cd ~/Documentos/proyectos/prueba/eventosiglesia.local 2>/dev/null
-git status >/dev/null 2>/dev/null
-if [ $? -eq 0 ]; then
-	changes=`git status --porcelain 0>/dev/null | wc -l`
-	if [ $changes -eq 0 ]; then
-        	echo "no han habido cambios"
-	else
-        	git reset --hard $SHA1 >/dev/null 2>/dev/null 
-		git clean -d -f >/dev/null 2>/dev/null
-        	echo "los cambios se han revertido exitosamente"
-	fi
-else
-	rm -rf ~/Documentos/proyectos/prueba/eventosiglesia.local >/dev/null 2>/dev/null
-	cd ~/Documentos/proyectos/prueba/ 2>/dev/null
-	echo "Restableciendo aplicacion..."
-	git clone http://github.com/jaalvaradoc/eventosiglesia.git >/dev/null 2>/dev/null
-	mv eventosiglesia eventosiglesia.local
-	if [ $? -eq 0 ]; then
-		echo "Se ha restablecido la aplicacion exitosamente"
-	else
-		echo "ha ocurrido un error al intentar reestablecer la aplicacion"
-	fi
-fi 
