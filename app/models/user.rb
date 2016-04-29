@@ -66,7 +66,16 @@ class User < ActiveRecord::Base
   end
 
   def view_permitted?(field)
-    true
+    #acting_user.administrator?
+    if !acting_user.guest?
+      if acting_user.administrator? || acting_user==self
+        return true
+      else
+        return false
+      end
+    else
+      return false
+    end
   end
 
   
