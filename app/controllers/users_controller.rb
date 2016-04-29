@@ -41,24 +41,28 @@ class UsersController < ApplicationController
     end
   end 
   def cambiar_rol
-    if !params[:user].blank?
-      @user=User.find(params[:user])
-      if @user.administrator
-        @user.administrator=false
-        if @user.save
-          flash[:success]="Se ha quitado el rol de Administrador al usuario #{@user.name} satisfactoriamente"  
+    if current_user.administrator?
+      if !params[:user].blank?
+        @user=User.find(params[:user])
+        if @user.administrator
+          @user.administrator=false
+          if @user.save
+            flash[:success]="Se ha quitado el rol de Administrador al usuario #{@user.name} satisfactoriamente"  
+          else
+            flash[:error]="Ha ocurrido un error al intentar asignar el rol de Administrador al usuario #{@user.name}"
+          end
         else
-          flash[:error]="Ha ocurrido un error al intentar asignar el rol de Administrador al usuario #{@user.name}"
+          @user.administrator=true
+          if @user.save
+            flash[:success]="Se ha asignado el rol de Administrador al usuario #{@user.name} satisfactoriamente"
+          else
+            flash[:error]="Ha ocurrido un error al intentar quitar el rol de Administrador al usuario #{@user.name}"  
+          end
         end
-      else
-        @user.administrator=true
-        if @user.save
-          flash[:success]="Se ha asignado el rol de Administrador al usuario #{@user.name} satisfactoriamente"
-        else
-          flash[:error]="Ha ocurrido un error al intentar quitar el rol de Administrador al usuario #{@user.name}"  
-        end
+      redirect_to "/users/roles-usuarios"
       end
-    redirect_to "/users/roles-usuarios"
+    else
+      redirect_to "/users/roles-usuarios"
     end
   end 
 end
