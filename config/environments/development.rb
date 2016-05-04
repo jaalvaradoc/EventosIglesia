@@ -25,8 +25,8 @@ Eventosiglesia::Application.configure do
     :address => "smtp.gmail.com",
     :port => 25,
     :domain => "gmail.com",
-    :user_name => "javisvmusic@gmail.com",
-    :password => "RealMadrid7",
+    :user_name => "noreply.intellisoft@gmail.com",
+    :password => "Intellisoft2016",
     :authentication => :login,
     enable_starttls_auto: true
     }
