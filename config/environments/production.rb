@@ -90,5 +90,17 @@ Eventosiglesia::Application.configure do
     
   }
 
+  #Correo
+  require 'tlsmail'
+  config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 25,
+    :domain => "gmail.com",
+    :user_name => "javisvmusic@gmail.com",
+    :password => "RealMadrid7",
+    :authentication => :login,
+    enable_starttls_auto: true
+    }
 
 end

@@ -65,3 +65,5 @@ gem "paperclip" , git: 'git://github.com/thoughtbot/paperclip.git'
 gem 'hobo_paperclip', :git => "git://github.com/Hobo/hobo_paperclip.git", :branch => "master"
 
 gem "aws-sdk", '~> 2'
+
+gem "tlsmail", '0.0.1'

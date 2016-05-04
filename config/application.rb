@@ -30,5 +30,6 @@ module Eventosiglesia
     config.i18n.default_locale = :es
 
     config.hobo.app_name="Eventos CIA"
+    config.action_mailer.default_url_options= { host: 'igeventos.tk' }
   end
 end
