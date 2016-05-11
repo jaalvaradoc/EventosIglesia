@@ -55,7 +55,7 @@ Eventosiglesia::Application.configure do
   # config.cache_store = :mem_cache_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  # config.action_controller.asset_host = "http://assets.example.com"
+  #config.action_controller.asset_host = "http://dlwoxvw5bj2ff.cloudfront.net"
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
@@ -93,5 +93,17 @@ Eventosiglesia::Application.configure do
     }
   }
 
+  #Correo
+  require 'tlsmail'
+  config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 25,
+    :domain => "gmail.com",
+    :user_name => "noreply.intellisoft@gmail.com",
+    :password => "Intellisoft2016",
+    :authentication => :login,
+    enable_starttls_auto: true
+    }
 
 end

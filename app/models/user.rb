@@ -74,7 +74,7 @@ class User < ActiveRecord::Base
         return false
       end
     else
-      return false
+      true
     end
   end
 
