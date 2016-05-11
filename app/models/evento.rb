@@ -13,7 +13,10 @@ class Evento < ActiveRecord::Base
 
   attr_accessible :nombre, :descripcion, :fecha_inicio, :imagen, :tallers, :cover
 
-  has_attached_file :cover, styles: {medium: "1280x720", thumb:"250x250"}, :storage => :s3,:s3_region => 'us-east-1', :s3_credentials => Proc.new{|a| a.instance.s3_credentials}
+  has_attached_file :cover, styles: {medium: "1280x720", thumb:"250x250"}, :storage => :s3,:s3_region => 'us-east-1', :s3_credentials => Proc.new{|a| a.instance.s3_credentials},
+    :url => ':s3_alias_url',
+    :path => '/:class/:attachment/:id_partition/:style/:filename',
+    :s3_host_alias => 'dlwoxvw5bj2ff.cloudfront.net'
 
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
   

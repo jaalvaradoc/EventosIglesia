@@ -82,12 +82,15 @@ Eventosiglesia::Application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_region => 'us-east-1',
+    :url => ':s3_alias_url',
+    :path => '/:class/:attachment/:id_partition/:style/:filename',
+    :s3_host_alias => 'dlwoxvw5bj2ff.cloudfront.net',
     :s3_credentials => {
-      :bucket =>'ciaeventos', 
-      :access_key_id => 'AKIAJLCMNNSWMSVQ4WSA', 
+      :bucket =>'ciaeventos',
+      :access_key_id => 'AKIAJLCMNNSWMSVQ4WSA',
       :secret_access_key => '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'
+
     }
-    
   }
 
 
