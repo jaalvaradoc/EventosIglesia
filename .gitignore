@@ -24,3 +24,8 @@ Gemfile.lock
 public/system/eventos/covers/
 public/system/tallers/
 
+#Ignore credentials
+config/environments/development.rb.bk
+config/environments/production.rb.bk
+
+
