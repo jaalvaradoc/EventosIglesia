@@ -27,5 +27,6 @@ public/system/tallers/
 #Ignore credentials
 config/environments/development.rb.bk
 config/environments/production.rb.bk
-
+app/models/evento.rb.bk
+app/models/taller.rb.bk
 
