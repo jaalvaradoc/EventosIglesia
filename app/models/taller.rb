@@ -23,7 +23,7 @@ class Taller < ActiveRecord::Base
   has_many :horarios, :through =>:inscripcions
 
   def s3_credentials
-    {:bucket => "ciaeventos", :access_key_id => "x x x x x x x x", :secret_access_key => "x x x x x x x x "}
+    {:bucket => "ciaeventos", :access_key_id => "AKIAJLCMNNSWMSVQ4WSA", :secret_access_key => "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"}
   end
 
   # --- Permissions --- #
