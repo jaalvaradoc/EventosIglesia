@@ -66,18 +66,22 @@ class InscripcionsController < ApplicationController
   end
 
   def listado_asistentes
-    if !params[:ta].blank?
-      @taller=Taller.find(params[:ta])
+    if current_user.administrator?
+      if !params[:ta].blank?
+        @taller=Taller.find(params[:ta])
+      else
+        @taller=Taller.all.first
+      end
+      if !params[:ho].blank?
+      @horario=Horario.find(params[:ho])
+      else
+        @taller=Horario.all.first
+      end
+      @evento=Evento.find(@taller.evento_id)
+      @usuarios=User.joins(:inscripcions).where("inscripcions.taller_id"=>@taller.id,"inscripcions.horario_id"=>@horario.id)
     else
-      @taller=Taller.all.first
+      redirect_to "/"
     end
-    if !params[:ho].blank?
-    @horario=Horario.find(params[:ho])
-    else
-      @taller=Horario.all.first
-    end
-    @evento=Evento.find(@taller.evento_id)
-    @usuarios=User.joins(:inscripcions).where("inscripcions.taller_id"=>@taller.id,"inscripcions.horario_id"=>@horario.id)
 
   end
 end
