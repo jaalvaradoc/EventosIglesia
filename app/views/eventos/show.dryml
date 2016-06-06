@@ -55,11 +55,9 @@
 	</table><center>
 	<%= link_to 'Detalles', "/tallers/#{taller.id}", :class =>"btn btn-small btn-primary" %>&nbsp;&nbsp;
 	<%if !current_user.administrator?&&!current_user.guest?&&(current_user.tallers.where("tallers.id = ? ", taller.id)).blank?%>
-
-	
-	<%= link_to "Inscribirse", "/inscripcions/new?taller=#{taller.id}", :class =>"btn btn-small btn-success"%>
+	<%= link_to "Inscribirse", "/inscripcions/new?taller=#{taller.id}", :class =>"btn btn-small btn-success"%>;&nbsp;
 	<%elsif current_user.administrator?%>
-	<%= link_to "Inscribir", "/inscripcions/new?taller=#{taller.id}", :class =>"btn btn-small btn-success"%>
+	<%= link_to "Inscribir", "/inscripcions/new?taller=#{taller.id}", :class =>"btn btn-small btn-success"%>;&nbsp;
 	<%= link_to 'Asistentes', "/inscripcions/listado_asistentes?ta=#{taller.id}&ho=#{Horario.all.first.id}", :class => "btn btn-small btn-info" %>
 	<%end%>
 	<%if current_user.guest?%>
