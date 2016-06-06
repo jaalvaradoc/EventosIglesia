@@ -30,7 +30,7 @@
 	<table class="table table-bordered responsive-utilities table-hover">
 		<tr>
 			<td class ="caja-azul" heigh="20px" valign="bottom">
-				<h3><%=taller.nombre%><br/></h3>
+				<h4><%=taller.nombre%><br/></h4>
 			</td>
 		</tr>
 	<tr>

@@ -30,12 +30,12 @@
   <table class="table table-bordered responsive-utilities">
     <tr>
       <td class ="caja-azul" heigh="20px" valign="bottom">
-  <h3><%=evento.nombre%></h3>
+  <h4><%=evento.nombre%></h4>
   </td>
     </tr>
   <tr>
     <td height="250px" valign="top">
-  <%= image_tag(evento.cover.url(:thumb), size: "250x250", alt: "#{evento.nombre}")%>
+  <%= image_tag(evento.cover.url(:thumb), size: "250x250", alt: "#{evento.nombre}",:class => "imagenes-tablas")%>
   </td>
   </tr>
   </table>
