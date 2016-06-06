@@ -31,8 +31,6 @@
 			<td>
 				<strong>Telefono</strong>
 			</td>
-			<td>
-			</td>
 		</tr>
 		<%@usuarios.each do |u|%>
 			<tr>
