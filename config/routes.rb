@@ -14,6 +14,7 @@ Eventosiglesia::Application.routes.draw do
   get 'users/cambiar_rol' => 'users#cambiar_rol'
   post 'horarios/crear_horario' => 'horarios#crear_horario'
   get 'inscripcions/inscribir' => 'inscripcions#inscribir' 
+  get 'inscripcions/listado_asistentes' => 'inscripcions#listado_asistentes' 
 
   #Inscribirse en un taller
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,56 @@
+
+<page title="Lista de Inscritos">
+
+  <body: class="celeste"/>
+
+  <content:>
+	<div class="row caja-azul">
+		<div class="span">
+		<h4>Evento: <%=@evento.nombre%></h4>
+		<h4>Taller: <%=@taller.nombre%></h4>
+		<h4>Hora: <%=@horario.hora_inicio.to_time.strftime("%I:%M %p")%></h4>
+		<h4>Seleccionar Horario: <%= select_tag "horario[id]",options_for_select(Horario.all.collect{ |u| [u.hora_inicio.to_time.strftime("%I:%M %p"),u.id]}) %>
+		Boton cambiar </h4>
+		
+
+		</div>
+	</div>
+	<h2>Lista de Inscritos</h2><br/>
+	<div>
+	
+	<table class="table table-bordered responsive-utilities table-hover">
+		<tr bgcolor="white">
+			<td>
+				<strong>Nombre</strong>
+			</td>
+
+			<td>
+				<strong>Correo</strong>
+			</td>
+			<td>
+				<strong>Telefono</strong>
+			</td>
+			<td>
+			</td>
+		</tr>
+		<%@usuarios.each do |u|%>
+			<tr>
+				<td>
+					<%=u.name%>
+				</td>
+				<td>
+					<%=u.email_address%>
+				</td>
+				<td>
+					<%=u.phone%>
+				</td>
+			</tr>
+		<%end%>
+	</table>
+	</div>
+
+    <section class="content-body">
+    </section>
+  </content:>
+
+</page>

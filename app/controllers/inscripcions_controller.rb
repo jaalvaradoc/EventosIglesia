@@ -38,26 +38,39 @@ class InscripcionsController < ApplicationController
   	@horario=Horario.find(params[:ho])
   	@taller=Taller.find(params[:t])
   	@inscripcion=Inscripcion.new
- 	@inscripcion.horario_id = params[:ho]
- 	@inscripcion.taller_id = params[:t]
- 	@inscripcion.user_id = params[:inscripcion][:user_id]#params[:u]
- 	@inscritos=Inscripcion.where(:horario_id=>@horario.id,:taller_id=>@taller.id).count
- 	@cupos=Taller.find(@taller.id).cupo
+   	@inscripcion.horario_id = params[:ho]
+   	@inscripcion.taller_id = params[:t]
+   	@inscripcion.user_id = params[:inscripcion][:user_id]#params[:u]
+   	@inscritos=Inscripcion.where(:horario_id=>@horario.id,:taller_id=>@taller.id).count
+   	@cupos=Taller.find(@taller.id).cupo
 
- 	if @cupos>@inscritos
-		if @inscripcion.save
-	    	flash[:success]="Se ha inscrito satisfactoriamente en el taller #{@taller.nombre} con el horario #{@horario.hora_inicio.to_time.strftime("%I:%M %p")}."
-	    	redirect_to "/tallers/#{@taller.id}"
-		else
-	    	flash[:error]="Ha ocurrido un error al intentar inscribirse."
-	    	redirect_to "/inscripcions/new?taller=#{@taller.id}"
-	  	end
-  	else
-  		flash[:error]="No hay cupos disponibles para el taller #{@taller.nombre} en el horario #{@horario.hora_inicio.to_time.strftime("%I:%M %p")}."	
-  		redirect_to "/inscripcions/new?taller=#{@taller.id}"
-  	end
-	
+   	if @cupos>@inscritos
+  		if @inscripcion.save
+  	    flash[:success]="Se ha inscrito satisfactoriamente en el taller #{@taller.nombre} con el horario #{@horario.hora_inicio.to_time.strftime("%I:%M %p")}."
+  	    redirect_to "/tallers/#{@taller.id}"
+  		else
+  	    flash[:error]="Ha ocurrido un error al intentar inscribirse."
+  	    redirect_to "/inscripcions/new?taller=#{@taller.id}"
+  	  end
+    else
+    	flash[:error]="No hay cupos disponibles para el taller #{@taller.nombre} en el horario #{@horario.hora_inicio.to_time.strftime("%I:%M %p")}."	
+    	redirect_to "/inscripcions/new?taller=#{@taller.id}"
+    end
   end
 
+  def listado_asistentes
+    if !params[:ta].blank?
+      @taller=Taller.find(params[:ta])
+    else
+      @taller=Taller.all.first
+    end
+    if !params[:ho].blank?
+    @horario=Horario.find(params[:ho])
+    else
+      @taller=Horario.all.first
+    end
+    @evento=Evento.find(@taller.evento_id)
+    @usuarios=User.joins(:inscripcions).where("inscripcions.taller_id"=>@taller.id,"inscripcions.horario_id"=>@horario.id)
 
+  end
 end
