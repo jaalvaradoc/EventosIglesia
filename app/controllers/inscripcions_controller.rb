@@ -43,11 +43,18 @@ class InscripcionsController < ApplicationController
    	@inscripcion.user_id = params[:inscripcion][:user_id]#params[:u]
    	@inscritos=Inscripcion.where(:horario_id=>@horario.id,:taller_id=>@taller.id).count
    	@cupos=Taller.find(@taller.id).cupo
+    @usuario=User.find(@inscripcion.user_id)
 
    	if @cupos>@inscritos
   		if @inscripcion.save
-  	    flash[:success]="Se ha inscrito satisfactoriamente en el taller #{@taller.nombre} con el horario #{@horario.hora_inicio.to_time.strftime("%I:%M %p")}."
-  	    redirect_to "/tallers/#{@taller.id}"
+  	    #flash[:success]="Se ha inscrito satisfactoriamente en el taller #{@taller.nombre} con el horario #{@horario.hora_inicio.to_time.strftime("%I:%M %p")}."
+  	    if !current_user.administrator?
+          flash[:success]="Se ha inscrito satisfactoriamente en el taller #{@taller.nombre} con el horario #{@horario.hora_inicio.to_time.strftime("%I:%M %p")}."
+          redirect_to "/tallers/#{@taller.id}"
+        else
+          flash[:success]="Se ha inscrito satisfactoriamente al usuario #{@usuario.id} en el taller #{@taller.nombre} con el horario #{@horario.hora_inicio.to_time.strftime("%I:%M %p")}."
+          redirect_to "/inscripcions/new?taller=#{@taller.id}"
+        end
   		else
   	    flash[:error]="Ha ocurrido un error al intentar inscribirse."
   	    redirect_to "/inscripcions/new?taller=#{@taller.id}"
