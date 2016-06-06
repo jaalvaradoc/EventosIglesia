@@ -4,6 +4,7 @@ you can place common code in this file. -->
 <!-- ====== Main Navigation ====== -->
 
 <def tag='account-nav'>
+  <%= favicon_link_tag 'favicon.ico' %>
   <div class='nav-collapse collapse'>
   <do with='&current_user'>
     <ul class='navigation account-nav nav pull-right' param>
