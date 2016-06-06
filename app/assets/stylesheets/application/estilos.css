@@ -9,6 +9,7 @@
     border-radius: 6px;
     background-size: 100% 100%;
     background: radial-gradient(at top center, #0764B6, #064161,58%,#00001a);
+    background: radial-gradient(at top center, #0764B6 0%,#064161 71%,#00001a 100%);
     *background-image: url("/imagenes/azul-degradado.png");
     opacity: 0.85;
     position:relative;
