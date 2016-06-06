@@ -4,15 +4,16 @@
   <body: class="celeste"/>
 
   <content:>
+  <form for="inscripcions" action="listado_asistentes" method="get">
+  
+
 	<div class="row caja-azul">
 		<div class="span">
-		<h4>Evento: <%=@evento.nombre%></h4>
+		<h3>Evento: <%=@evento.nombre%></h3>
 		<h4>Taller: <%=@taller.nombre%></h4>
+		<%=hidden_field_tag "ta",@taller.id%>
 		<h4>Hora: <%=@horario.hora_inicio.to_time.strftime("%I:%M %p")%></h4>
-		<h4>Seleccionar Horario: <%= select_tag "horario[id]",options_for_select(Horario.all.collect{ |u| [u.hora_inicio.to_time.strftime("%I:%M %p"),u.id]}) %>
-		Boton cambiar </h4>
-		
-
+		<h4>Seleccionar Horario: <%= select_tag "ho",options_for_select([["Seleccionar horario",@horario.id]]+Horario.all.collect{ |u| [u.hora_inicio.to_time.strftime("%I:%M %p"),u.id]}),:onchange => "this.form.submit();" %></h4>
 		</div>
 	</div>
 	<h2>Lista de Inscritos</h2><br/>
@@ -51,6 +52,7 @@
 
     <section class="content-body">
     </section>
+    </form>
   </content:>
 
 </page>

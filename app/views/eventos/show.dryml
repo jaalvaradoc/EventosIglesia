@@ -60,6 +60,7 @@
 	<%= link_to "Inscribirse", "/inscripcions/new?taller=#{taller.id}", :class =>"btn btn-small btn-success"%>
 	<%elsif current_user.administrator?%>
 	<%= link_to "Inscribir", "/inscripcions/new?taller=#{taller.id}", :class =>"btn btn-small btn-success"%>
+	<%= link_to 'Ver Asistentes', "/inscripcions/listado_asistentes?ta=#{taller.id}&ho=#{Horario.all.first.id}", :class => "btn btn-small btn-success" %>
 	<%end%>
 	<%if current_user.guest?%>
 	<%= link_to 'Inscribirse', user_login_path , :class =>"btn btn-small btn-success"%>
