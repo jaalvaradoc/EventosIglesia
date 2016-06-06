@@ -15,7 +15,7 @@
   <div class="row container">
 	<%@eventos.where("fecha_inicio >= ?",Time.now).reverse_each do |evento|%>
   <div class="span3">
-  <table class="table table-bordered table-striped responsive-utilities table-hover">
+  <table class="table table-bordered responsive-utilities table-hover">
     <tr>
       <td class ="caja-azul" heigh="20px" valign="bottom">
 	<h3><%=evento.nombre%></h3>
