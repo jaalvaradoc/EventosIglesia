@@ -39,6 +39,7 @@
     background: -o-linear-gradient(to bottom, rgba(255,255,255,0),85%,white),-o-radial-gradient(at bottom center, #fff,30%, #04B4AE,70%,#00264d);
     background: -webkit-linear-gradient(to bottom, rgba(255,255,255,0),85%,white),-webkit-radial-gradient(at bottom center, #fff,30%, #04B4AE,70%,#00264d);
     background: linear-gradient(to bottom, rgba(255,255,255,0),85%,white),radial-gradient(at bottom center, #fff,30%, #04B4AE,70%,#00264d);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0563aa', endColorstr='#fcfcfc',GradientType=0 ); 
     *background: radia-gradient(bottom center, #fff,30%, #01DFD7,70%,#084B8A);
     background-size: cover;
     background-repeat: no-repeat;
