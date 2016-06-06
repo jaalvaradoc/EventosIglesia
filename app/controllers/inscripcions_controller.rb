@@ -52,7 +52,7 @@ class InscripcionsController < ApplicationController
           flash[:success]="Se ha inscrito satisfactoriamente en el taller #{@taller.nombre} con el horario #{@horario.hora_inicio.to_time.strftime("%I:%M %p")}."
           redirect_to "/tallers/#{@taller.id}"
         else
-          flash[:success]="Se ha inscrito satisfactoriamente al usuario #{@usuario.id} en el taller #{@taller.nombre} con el horario #{@horario.hora_inicio.to_time.strftime("%I:%M %p")}."
+          flash[:success]="Se ha inscrito satisfactoriamente al usuario #{@usuario.name} en el taller #{@taller.nombre} con el horario #{@horario.hora_inicio.to_time.strftime("%I:%M %p")}."
           redirect_to "/inscripcions/new?taller=#{@taller.id}"
         end
   		else
