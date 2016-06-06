@@ -27,9 +27,11 @@
 }
 
 .forgot-password-page, .login-page, .user-account-page, .new-page, .celeste {
-	background-color: #e6f3ff;
+	background-color: white;
     margin-top:80px;
-    background-image: url("/imagenes/fondo.png");
+    *background: -webkit-radial-gradient(bottom center, #fff,30%, #01DFD7,70%,#084B8A);
+    background: linear-gradient(to bottom, rgba(255,255,255,0),85%,white),radial-gradient(at bottom center, #fff,30%, #01DFD7,70%,#084B8A);
+    *background: radia-gradient(bottom center, #fff,30%, #01DFD7,70%,#084B8A);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
