@@ -24,7 +24,7 @@
     <section class="content-body">
 <% if User.count != 0 -%>
 <h2>Ultimos Eventos</h2><br/>
-    <div class="row container">
+    <div class="row">
   <%Evento.all.where("fecha_inicio >=?",Time.now).reverse_each do |evento|%>
   <div class="span3">
   <table class="table table-bordered responsive-utilities">
