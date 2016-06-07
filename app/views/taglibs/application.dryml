@@ -227,9 +227,7 @@ you can place common code in this file. -->
 
     <content-header: class="caja-azul" param>
       <h2 param="heading">
-        <ht key="user.edit.heading" name="#{name(:no_wrapper => true)}">
-          Edit User
-        </ht>
+        Editar Usuario
       </h2>
       <delete-button label="#{ht 'user.actions.delete', :default=>['Remove This User']}" param/>
     </content-header:>
