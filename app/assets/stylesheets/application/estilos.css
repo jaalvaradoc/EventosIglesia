@@ -108,9 +108,9 @@
     clear: both;
     position: relative;
     z-index: 10;
-    *height: 20px;
-    *margin-top: -3em;
+    height: 20px;
     background-color: #00264d;
     color:white;
     border-color: black;
+    vertical-align: middle;
 }
