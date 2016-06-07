@@ -334,7 +334,7 @@ you can place common code in this file. -->
       <b>G&eacute;nero</b>
     </gender-label:>
     <gender-view:>
-    <%= select_tag "user_gender",options_for_select([["Masculino","Masculino"]]+[["Femenino","Femenino"]])%>
+    <%= select_tag "user[gender]" ,options_for_select(["Masculino","Femenino"])%>
     </gender-view:>
     <birth_date-label:>
       <b>Fecha de Nacimiento</b>
