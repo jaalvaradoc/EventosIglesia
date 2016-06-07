@@ -6,7 +6,7 @@
 # It might be ok also for Spain. If you find any error, or if you have any more specific translation,
 # please post it to http://hobousers.googlegroups.com. Thank you!
 
-es:
+en:
   hobo:
     # default hobo pages translations
     index:
@@ -59,6 +59,7 @@ es:
     signup:
       title: "Registro"
       heading: "Registrar nuevo usuario"
+      name: "nombre"
 
     forgot_password:
       title: *forgot_password

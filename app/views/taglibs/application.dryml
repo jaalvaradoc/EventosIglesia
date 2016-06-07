@@ -293,6 +293,67 @@ you can place common code in this file. -->
   </page>
 </def>
 
+<extend tag="form" for="User">
+  <old-form merge multipart>
+    <field-list: fields="name, gender, birth_date, phone, email_address, password, password_confirmation">
+    <name-label:>
+      <b>Nombre</b>
+    </name-label:>
+    <gender-label:>
+      <b>G&eacute;nero</b>
+    </gender-label:>
+    <gender-view:>
+    <%= select_tag "user[gender]" ,options_for_select(["Masculino","Femenino"],@user.gender)%>
+    </gender-view:>
+    <birth_date-label:>
+      <b>Fecha de Nacimiento</b>
+    </birth_date-label:>
+    <phone-label:>
+      <b>Tel&eacute;fono</b>
+    </phone-label:>
+    <email_address-label:>
+      <b>Correo</b>
+    </email_address-label:>
+    <password-label:>
+      <b>Nueva Contrase&ntilde;a</b>
+    </password-label:>
+    <password_confirmation-label:>
+      <b>Confirmar Contrase&ntilde;a</b>
+    </password_confirmation-label:>
+    </field-list:>
+  </old-form>
+</extend>
+
+<extend tag="signup-form" for="User">
+  <old-signup-form merge multipart>
+    <field-list: fields="name, gender, birth_date, phone, email_address, password, password_confirmation">
+    <name-label:>
+      <b>Nombre</b>
+    </name-label:>
+    <gender-label:>
+      <b>G&eacute;nero</b>
+    </gender-label:>
+    <gender-view:>
+    <%= select_tag "user_gender",options_for_select([["Masculino","Masculino"]]+[["Femenino","Femenino"]])%>
+    </gender-view:>
+    <birth_date-label:>
+      <b>Fecha de Nacimiento</b>
+    </birth_date-label:>
+    <phone-label:>
+      <b>Tel&eacute;fono</b>
+    </phone-label:>
+    <email_address-label:>
+      <b>Correo</b>
+    </email_address-label:>
+    <password-label:>
+      <b>Contrase&ntilde;a</b>
+    </password-label:>
+    <password_confirmation-label:>
+      <b>Confirmar Contrase&ntilde;a</b>
+    </password_confirmation-label:>
+    </field-list:>
+  </old-signup-form>
+</extend>
 
 <!-- ====== Taller Pages ====== -->
 <extend tag="form" for="Taller">
