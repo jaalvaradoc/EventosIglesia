@@ -58,7 +58,7 @@ you can place common code in this file. -->
 <extend tag="page">
   <old-page merge>
     <footer: class="pie" param>
-      <div align="center" style="margin-top:-10px">&copy; IntelliSoft SV  - 2016<br/> Compatible con Google Chrome, Mozilla Firefox,Internet Explorer, Edge, Opera y Safari.</div>
+      <div align="center" style="margin-top:-20px">&copy; IntelliSoft SV  - 2016<br/> Compatible con Google Chrome, Mozilla Firefox,Internet Explorer, Edge, Opera y Safari.</div>
     </footer:>
   </old-page>
 </extend>
