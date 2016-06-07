@@ -42,18 +42,26 @@ you can place common code in this file. -->
   <do with='&current_user'>
     <ul class='navigation account-nav nav pull-left' param>
     <nav-item href="#{base_url}/">Inicio</nav-item>
-    <nav-item with="&Evento"><ht key="evento.nav_item" count="100">Evento</ht></nav-item>
+    <nav-item with="&Evento"><ht key="evento.nav_item" count="100">Eventos</ht></nav-item>
     <%if !current_user.guest?#&&!current_user.administrator?%>
     <nav-item href="#{base_url}/users/lista-talleres">Talleres del usuario</nav-item>
     <%end%>
     <%if current_user.administrator?%>
-    <nav-item with="&Horario"><ht key="horario.nav_item" count="100">Horario</ht></nav-item>
+    <nav-item with="&Horario"><ht key="horario.nav_item" count="100">Horarios</ht></nav-item>
     <nav-item href="#{base_url}/users/roles-usuarios">Asignar roles</nav-item>
     <%end%>
     </ul>
   </do>
   </div>
 </def>
+
+<extend tag="page">
+  <old-page merge>
+    <footer: class="pie" param>
+      <div align="center">&copy; IntelliSoft SV  - 2016<br/> Compatible con Google Chrome, Mozilla Firefox,Internet Explorer, Edge, Opera y Safari</div>
+    </footer:>
+  </old-page>
+</extend>
 
 <!-- ===========Evento=Editar============== -->
 
