@@ -295,7 +295,7 @@ you can place common code in this file. -->
 
 <extend tag="form" for="User">
   <old-form merge multipart>
-    <field-list: fields="name, gender, birth_date, phone, email_address, password, password_confirmation">
+    <field-list: fields="name, gender, birth_date, phone, email_address,current_password, password, password_confirmation">
     <name-label:>
       <b>Nombre</b>
     </name-label:>
@@ -314,6 +314,9 @@ you can place common code in this file. -->
     <email_address-label:>
       <b>Correo</b>
     </email_address-label:>
+    <current_password-label:>
+      <b>Contrase&ntilde;a</b>
+    </current_password-label:>
     <password-label:>
       <b>Nueva Contrase&ntilde;a</b>
     </password-label:>
